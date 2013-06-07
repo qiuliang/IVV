@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClassLib\StaticDef.cs" />
+    <Compile Include="ClassLib\FileUtil.cs" />
     <Compile Include="ClassLib\HtmlHelperExtensions.cs" />
     <Compile Include="ClassLib\JsonData.cs" />
     <Compile Include="ClassLib\ImageCoder.cs" />

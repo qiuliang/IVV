@@ -5,7 +5,7 @@
         editor.ui.addButton('Upload', {
             label: '上传文件',
             command: 'uploadDialog',
-            toolbar: 'insert'
+            toolbar: 'insert,1'
         });
 
         CKEDITOR.dialog.add('uploadDialog', this.path + 'dialogs/upload.js');

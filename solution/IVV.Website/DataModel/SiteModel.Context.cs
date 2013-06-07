@@ -29,5 +29,7 @@ namespace IVV.Website.DataModel
         public DbSet<SiteInfo> SiteInfo { get; set; }
         public DbSet<SysUser> SysUser { get; set; }
         public DbSet<Post> Post { get; set; }
+        public DbSet<FileInfo> FileInfo { get; set; }
+        public DbSet<Video> Video { get; set; }
     }
 }

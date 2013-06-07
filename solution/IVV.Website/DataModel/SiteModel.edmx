@@ -6,11 +6,27 @@
     <edmx:StorageModels>
       <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="FileInfo" EntityType="DataModel.Store.FileInfo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="DataModel.Store.Post" store:Type="Tables" />
           <EntitySet Name="ProductCategory" EntityType="DataModel.Store.ProductCategory" store:Type="Tables" />
           <EntitySet Name="SiteInfo" EntityType="DataModel.Store.SiteInfo" store:Type="Tables" />
           <EntitySet Name="SysUser" EntityType="DataModel.Store.SysUser" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="DataModel.Store.Video" store:Type="Tables" />
         </EntityContainer>
+        <EntityType Name="FileInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="OriginalName" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Url" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Length" Type="integer" Nullable="false" />
+          <Property Name="ExtName" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ThumbnailUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PhysicalPath" Type="nvarchar" Nullable="false" MaxLength="2000" />
+        </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="Id" />
@@ -46,6 +62,17 @@
           <Property Name="UserName" Type="nvarchar" Nullable="false" />
           <Property Name="PWD" Type="nvarchar" Nullable="false" />
         </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="4000" />
+          <Property Name="HtmlCode" Type="nvarchar" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SourcePath" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
@@ -56,6 +83,8 @@
           <EntitySet Name="SiteInfo" EntityType="DataModel.SiteInfo" />
           <EntitySet Name="SysUser" EntityType="DataModel.SysUser" />
           <EntitySet Name="Post" EntityType="DataModel.Post" />
+          <EntitySet Name="FileInfo" EntityType="DataModel.FileInfo" />
+          <EntitySet Name="Video" EntityType="DataModel.Video" />
         </EntityContainer>
         <EntityType Name="ProductCategory">
           <Key>
@@ -91,6 +120,31 @@
           <Property Type="DateTime" Name="CreateDate" Nullable="false" />
           <Property Type="DateTime" Name="UpdateDate" />
           <Property Type="String" Name="Poster" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FileInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OriginalName" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="Length" Nullable="false" />
+          <Property Type="String" Name="ExtName" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="String" Name="ThumbnailUrl" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhysicalPath" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlCode" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImgUrl" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SourcePath" MaxLength="4000" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -132,6 +186,33 @@
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileInfo">
+            <EntityTypeMapping TypeName="DataModel.FileInfo">
+              <MappingFragment StoreEntitySet="FileInfo">
+                <ScalarProperty Name="PhysicalPath" ColumnName="PhysicalPath" />
+                <ScalarProperty Name="ThumbnailUrl" ColumnName="ThumbnailUrl" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExtName" ColumnName="ExtName" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="OriginalName" ColumnName="OriginalName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="DataModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="SourcePath" ColumnName="SourcePath" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="HtmlCode" ColumnName="HtmlCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

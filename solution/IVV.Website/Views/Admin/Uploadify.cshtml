@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@{Layout=null;}
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -18,14 +19,35 @@
 			min-width:0;
 			text-decoration:underline;
 		}
+	    #divThumbnail p {
+            float : left;
+            margin-left:10px;
+            border:solid 1px #ccc;
+            padding:5px;
+            cursor:pointer;
+            position:relative;
+	    }
+	    #divThumbnail p:hover {
+            border:solid 3px #ccc;
+	    }
+        #divThumbnail p.selected {
+            border : solid 3px #468847;
+            /*background:url(/images/ok.png) no-repeat #fff right top;*/
+        }
+        #divThumbnail p.selected span.icon {
+            width : 32px;
+            height : 32px;
+            background:url(/images/check.png);
+            position:absolute;
+            top:0px;
+            right:0px;
+        }
 	</style>
 </head>
 <body>
-    <h1>Uploadify Demo</h1>
 	<form name="form1" id="form1" action="d">
 		<div id="queue"></div>
-		<input type="text" name="userName" id="userName" />
-		<input id="file_upload" name="file_upload" type="file">
+		<input id="file_upload" name="file_upload" type="file" />
 	</form>	
 
 	<script type="text/javascript">
@@ -47,13 +69,23 @@
 				'swf': '/Scripts/uploadify/uploadify.swf',
 				'uploader': 'ImageUpload.aspx',
 				'onQueueComplete': function (queueData) {
-					alert(queueData.uploadsSuccessful + "success!");
+					//alert(queueData.uploadsSuccessful + "success!");
 				},
 				'onSelect': function (file) {
 					selectedFiles++;
 				},
-				'onUploadComplete': function () {
-					selectedFiles--;
+				'onUploadComplete': function (d) {
+				    selectedFiles--;
+				    
+				},
+				'onUploadSuccess': function (file, data, response) {
+				    var d = eval("(" + data + ")");
+				    var str = "<p><span class='icon'></span>";
+				    str += "<img style='width:80px;' src='" + d.path + "' />";
+				    str += "</p>";
+				    var jdom = $(str);
+				    $("#divThumbnail").append(jdom);
+				    bindFileEvent(jdom);
 				},
 				'onCancel': function () {
 					selectedFiles--;
@@ -65,11 +97,37 @@
 				return false;
 			});
 		});
+		function bindFileEvent(el) {
+		    el.click(function () {
+		        $(this).toggleClass("selected");
+		    });
+		}
+        //在document对象上绑定返回【所有选择文件路径】的方法
+		document.__getUploadFileUrls = function () {
+		    var urls = [];
+		    $("#divThumbnail p.selected img").each(function () {
+		        urls.push($(this).attr("src"));
+		    });
+		    return urls;
+		};
 	</script>
 
 	<p>
-		<a href="javascript:$('#file_upload').uploadify('upload', '*')">Upload Files</a>
-		<a href="#" id="submitForm">upload</a>
+		@*<a href="javascript:$('#file_upload').uploadify('upload', '*')">Upload Files</a>*@
+        <button id="btnUpload">上传文件</button>
+		@*<a href="#" id="submitForm">upload</a>*@
 	</p>
+
+    <div id="divThumbnail">
+
+
+    </div>
+
+    <script type="text/javascript">
+        $("#btnUpload").click(function () {
+            $('#file_upload').uploadify('upload', '*');
+        });
+        
+    </script>
 </body>
 </html>

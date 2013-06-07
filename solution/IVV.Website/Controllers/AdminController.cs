@@ -127,14 +127,15 @@ namespace IVV.Website.Controllers {
 		}
 
 
-		public ActionResult ImageUpload() {
-			HttpFileCollectionBase fc = Request.Files;
-			NameValueCollection c = Request.Form;
+		public JsonResult ImageUpload() {
+            string path = "/content/uploads/";
 
-			foreach (string key in c.Keys) {				
-				string a = c[key];
-			}
-			return Json(new { name = "abc" }, JsonRequestBehavior.AllowGet);
+			var futil = new FileUtil();
+            futil.HttpPostedFile = Request.Files["FileData"];
+            futil.RootDirect = path;
+            
+            var fp = futil.SaveByDay();
+			return Json(new { path = fp }, JsonRequestBehavior.AllowGet);
 		}
 
 

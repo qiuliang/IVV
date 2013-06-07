@@ -1,0 +1,85 @@
+﻿@{
+    var list = ViewData["list"] as IVV.Website.ClassLib.PageList<IVV.Website.DataModel.NoteBook>;
+} 
+
+@{
+    ViewBag.Title = "NoteBook";
+}
+
+<h2>NoteBook</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="tbList">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            Company
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            CreateDate
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in list) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            <a class="btn">展开</a>
+            <p style="display:none;">@item.Message</p>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditNoteBook", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DelNoteBook", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tbList a.btn").click(function () {
+            $(this).next("p").toggle();
+        });
+    });
+</script>

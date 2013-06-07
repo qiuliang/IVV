@@ -11,6 +11,13 @@
         <li class="first @if(a=="news"){<text>selected</text>}"><a href="/admin/news.aspx">新闻列表</a></li>
         <li class="first @if(a=="addnews"){<text>selected</text>}"><a href="/admin/addnews.aspx">添加新闻</a></li>
     }
+    else if(a == "video" || a =="editvideo" ){
+        <li class="first @if(a=="video"){<text>selected</text>}"><a href="/admin/video.aspx">视频列表</a></li>
+        <li class="first @if(a=="editvideo"){<text>selected</text>}"><a href="/admin/editvideo.aspx">添加视频</a></li>
+    }
+    else if(a == "notebook" || a =="editnotebook" ){
+        <li class="first @if(a=="notebook"){<text>selected</text>}"><a href="/admin/video.aspx">留言列表</a></li>
+    }
     @:</ul>
 }
 
@@ -21,9 +28,13 @@
     var conf = new string[]{"company","copyright"};
     var news = new string[]{"news","addnews"};
     var prod = new string[]{"product"};
+    var av = new string[]{"video","editvideo"};
+    var msg = new string[]{"notebook","editnotebook"};
     <text>
     <li class="@if(conf.Contains(a)){<text>selected</text>}"><a href="/admin/company.aspx">网站设置</a></li>
     <li class="@if(news.Contains(a)){<text>selected</text>}"><a href="/admin/news.aspx">新闻管理</a></li>
     <li class="@if(prod.Contains(a)){<text>selected</text>}"><a href="/admin/product.aspx">产品管理</a></li>
+    <li class="@if(av.Contains(a)){<text>selected</text>}"><a href="/admin/video.aspx">视频管理</a></li>
+    <li class="@if(msg.Contains(a)){<text>selected</text>}"><a href="/admin/notebook.aspx">留言管理</a></li>
     </text>
 }

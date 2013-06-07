@@ -31,5 +31,6 @@ namespace IVV.Website.DataModel
         public DbSet<Post> Post { get; set; }
         public DbSet<FileInfo> FileInfo { get; set; }
         public DbSet<Video> Video { get; set; }
+        public DbSet<NoteBook> NoteBook { get; set; }
     }
 }

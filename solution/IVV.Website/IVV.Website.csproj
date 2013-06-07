@@ -129,8 +129,18 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\WebsiteController.cs" />
+    <Compile Include="DataModel\FileInfo.cs">
+      <DependentUpon>SiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\ModelValidation\PostValidation.cs" />
+    <Compile Include="DataModel\ModelValidation\VideoValidation.cs" />
+    <Compile Include="DataModel\ModelValidation\NoteBookValidation.cs" />
+    <Compile Include="DataModel\NoteBook.cs">
+      <DependentUpon>SiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Partial\Post.cs" />
+    <Compile Include="DataModel\Partial\Video.cs" />
+    <Compile Include="DataModel\Partial\NoteBook.cs" />
     <Compile Include="DataModel\Post.cs">
       <DependentUpon>SiteModel.tt</DependentUpon>
     </Compile>
@@ -159,6 +169,9 @@
       <DependentUpon>SiteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\SysUserPartial.cs" />
+    <Compile Include="DataModel\Video.cs">
+      <DependentUpon>SiteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1388,6 +1401,7 @@
     <Content Include="Scripts\uploadify\uploadify-cancel.png" />
     <Content Include="Scripts\uploadify\uploadify.css" />
     <Content Include="Scripts\uploadify\uploadify.swf" />
+    <Content Include="Scripts\uploader.js" />
     <Content Include="Styles\admin.css" />
     <Content Include="Styles\kendo.common.min.css" />
     <Content Include="Styles\kendo.default.min.css" />
@@ -1420,6 +1434,9 @@
     <Content Include="Views\Admin\_pagebar.cshtml" />
     <Content Include="Views\Admin\AddNews.cshtml" />
     <Content Include="Views\Admin\_ViewStart.cshtml" />
+    <Content Include="Views\Admin\Video.cshtml" />
+    <Content Include="Views\Admin\EditVideo.cshtml" />
+    <Content Include="Views\Admin\NoteBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

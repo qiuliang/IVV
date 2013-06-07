@@ -12,6 +12,7 @@
           <EntitySet Name="SiteInfo" EntityType="DataModel.Store.SiteInfo" store:Type="Tables" />
           <EntitySet Name="SysUser" EntityType="DataModel.Store.SysUser" store:Type="Tables" />
           <EntitySet Name="Video" EntityType="DataModel.Store.Video" store:Type="Tables" />
+          <EntitySet Name="NoteBook" EntityType="DataModel.Store.NoteBook" store:Type="Tables" />
         </EntityContainer>
         <EntityType Name="FileInfo">
           <Key>
@@ -26,6 +27,20 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="ThumbnailUrl" Type="nvarchar" MaxLength="1000" />
           <Property Name="PhysicalPath" Type="nvarchar" Nullable="false" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="NoteBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="200" />
+          <Property Name="Company" Type="nvarchar" MaxLength="500" />
+          <Property Name="Country" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Message" Type="nvarchar" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -85,6 +100,7 @@
           <EntitySet Name="Post" EntityType="DataModel.Post" />
           <EntitySet Name="FileInfo" EntityType="DataModel.FileInfo" />
           <EntitySet Name="Video" EntityType="DataModel.Video" />
+          <EntitySet Name="NoteBook" EntityType="DataModel.NoteBook" />
         </EntityContainer>
         <EntityType Name="ProductCategory">
           <Key>
@@ -145,6 +161,20 @@
           <Property Type="String" Name="HtmlCode" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ImgUrl" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SourcePath" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NoteBook">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Surname" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Company" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Country" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -214,6 +244,21 @@
                 <ScalarProperty Name="HtmlCode" ColumnName="HtmlCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteBook">
+            <EntityTypeMapping TypeName="DataModel.NoteBook">
+              <MappingFragment StoreEntitySet="NoteBook">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,0 +1,29 @@
+﻿* {
+	padding: 0;
+	margin: 0;
+	font-size:14px;
+}
+
+body {
+	font-family:'Microsoft YaHei' SimSun;
+	background:#fff;
+	text-indent:0;
+}
+
+a {
+	text-decoration: none;
+	color:black;
+	font-family:'Microsoft YaHei' SimSun;
+}
+
+a:hover {
+	color:#666;
+}
+
+ul, ol {
+	list-style-type:none;
+}
+
+img {
+	border: none;
+}

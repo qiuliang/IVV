@@ -1,0 +1,54 @@
+﻿@model IVV.Website.DataModel.Post
+
+@{
+    ViewBag.Title = "AddNews";
+}
+
+@section head{
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<link href="~/Scripts/ckeditor/contents.css" rel="stylesheet" />
+}
+
+<h2>AddNews</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Post</legend>
+        @Html.HiddenFor(m => m.Id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Content)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(x => x.Content, new { @class="ckeditor" })
+            @Html.ValidationMessageFor(model => model.Content)
+        </div>
+
+
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+}

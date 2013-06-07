@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SiteEntity" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ProductCategory" EntityType="DataModel.ProductCategory" />
+    <EntitySet Name="SiteInfo" EntityType="DataModel.SiteInfo" />
+    <EntitySet Name="SysUser" EntityType="DataModel.SysUser" />
+  </EntityContainer>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" Unicode="true" FixedLength="false" />
+    <Property Name="Cover" Type="String" Nullable="false" MaxLength="2147483647" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SiteInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Company" Type="String" MaxLength="8000" Unicode="true" FixedLength="false" />
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Type="String" Name="Copyright" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SysUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="2147483647" Unicode="true" FixedLength="false" />
+    <Property Name="PWD" Type="String" Nullable="false" MaxLength="2147483647" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,23 @@
+﻿@{
+	Layout = "_LayoutList.cshtml";
+    ViewBag.Title = "产品信息";
+}
+
+@section head{
+<style type="text/css">
+body {
+	background-image: url(images/dettaglio-wave.jpg);
+}
+</style>
+}
+
+@section menu{
+	@Html.Action("Menu", "Website", new { name = "产品" })
+}
+
+<h1>产品</h1>
+
+<p style="margin:4em 0 2em;">
+<a href="@Url.Content("~/ProductList.aspx")"><img src="@Url.Content("~/Images/button-home.jpg")" /></a></p>
+
+<p style="margin:0 0 3em;"><a href="@Url.Content("~/ProductList.aspx")"><img src="@Url.Content("~/Images/button-table.jpg")" /></a></p>

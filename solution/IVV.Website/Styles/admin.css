@@ -1,0 +1,165 @@
+﻿@import url(main.css);
+
+body {
+	background:#fff url(../Images/admin/body_bg.png) left bottom repeat-y;
+	color:#444;
+}
+
+div, td, form, p, span, a {
+	font-size:12px;
+	font-family:SimSun;
+}
+
+#logo {
+	position:absolute;
+	top:10px;
+	left:60px;
+}
+
+#header {
+	padding:35px 40px 25px 180px;
+	background:#fff;
+}
+
+#header li {
+	float:right;
+	text-align:left;	
+	font-size:12px;
+	font-family:SimSun;
+	padding:7px 20px 5px 25px;
+}
+
+#navi {
+	border-top:1px solid #d3d8db;
+	padding:0 0 20px 180px;
+	background:#fff url(/Images/admin/navi_bg.png) left bottom repeat-x;
+}
+
+#navi li {
+	float:left;
+	width:90px;
+	padding-top:5px;
+	text-align:center;
+}
+
+#navi li.selected {
+	border-top:2px solid #ff8800;
+	position:relative;
+	top:-1px;
+	font-weight:bold;
+}
+
+#navi li a {
+	font-size:13px;	
+}
+
+#menu {
+	width:180px;
+	float:left;
+	position:relative;
+	top:-6px;
+	background:#f8f8f8;
+	border-right:1px solid #d3d8db;
+}
+
+#menu li {
+	text-indent:50px;
+	border-bottom:1px solid #e1e6e9;	
+	position:relative;
+}
+
+#menu li a{
+	font-size:12px;
+	font-family:SimSun;	
+	height:28px;
+	display:block;
+	line-height:220%;
+}
+
+#menu li.hover{
+	background:#e9eff5;
+}
+
+#menu li.selected {
+	background:#dfe9f2;
+	border-top:1px solid #bad3e9;	
+	border-bottom:1px solid #bad3e9;	
+}
+
+#menu li.first {
+	border-top:1px solid #d5d5d5;
+}
+
+#main {
+	margin:15px 10px 0 195px;
+	font-size:12px;
+	font-family:SimSun;
+}
+
+#main td {
+	font-size:12px;
+}
+
+#main h2 {
+	/*border-bottom:2px solid #3790cf;*/
+	padding:0 0 10px;
+	font-weight:normal;
+}
+
+div.blueLine {
+	position: absolute;
+	left: 0;
+	top: -1px;
+	height: 30px;
+	background: #3790cf;
+	width: 3px;
+}
+
+.textbox {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius:4px;
+	padding:5px 4px;
+	font-size:12px;
+	border:1px solid #d7d7d7;
+	background:#fff;
+}
+
+input.focus {
+	background:#f5f5f5;
+}
+
+a.button, a.button:hover {
+	font-size:14px;
+	background:#f60;
+	color:#fff;
+	display:block;
+	text-align:center;
+	padding:5px 0;
+}
+
+.validation-error
+{
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius:4px;
+	padding:5px 4px;
+	font-size:12px;
+    border: 1px solid #f33;
+    background-color: #ffeeee;
+}
+
+.validation-summary {
+	color:#f33;
+}
+
+p.validation-note {
+	font-size:12px;
+	color:#f33;	
+	position:absolute;
+	display:none;
+	background:url(../images/admin/icon_error.png) left center no-repeat;
+	text-indent:20px;
+	padding:3px 0;
+	width:300px;
+}

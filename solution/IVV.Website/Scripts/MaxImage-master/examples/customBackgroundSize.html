@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class='no-js' lang='en'>
+	<!--<![endif]-->
+	<head>
+		<meta charset='utf-8' />
+		<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+		<title>Custom Background Size Function Example | MaxImage 2.0</title>
+		
+		<meta content='jQuery Plugin to make jQuery Cycle Plugin work as a fullscreen background image slideshow' name='description' />
+		<meta content='Aaron Vanderzwan' name='author' />
+		
+		<meta name="distribution" content="global" />
+		<meta name="language" content="en" />
+		<meta content='width=device-width, initial-scale=1.0' name='viewport' />
+		
+		<link rel="stylesheet" href="../lib/css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
+		<link rel="stylesheet" href="../lib/css/screen.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
+		
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		
+		<style type="text/css" media="screen">			
+			#maximage {
+				display:none;
+				position:fixed !important;
+			}
+			
+			/*Set my logo in bottom left*/
+			#logo {
+				bottom:30px;
+				height:auto;
+				left:0;
+				position:absolute;
+				width:100%;
+				text-align:center;
+				z-index:1000;
+			}
+		</style>
+		
+		<!--[if IE 6]>
+			<style type="text/css" media="screen">
+				/*I don't feel like messing with pngs for this browser... sorry*/
+				#gradient {display:none;}
+			</style>
+		<![endif]-->
+	</head>
+	<body>
+		<a href="http://www.aaronvanderzwan.com/blog/maximage-2-0/" id="logo"><img src="../lib/images/demo/logo.png" alt="MaxImage: Uses jQuery Cycle Plugin to create background slideshows" /></a>
+		
+		<div id="maximage">
+			<img src="../lib/images/demo/oldmanb.jpg" alt="" width="1422" height="1800" />
+			<img src="../lib/images/demo/oldmantatoo.jpg" alt="" width="800" height="1200" />
+			<img src="../lib/images/demo/oldladyb.jpg" alt="" width="1166" height="1400" />
+		</div>
+		
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+		<script src="../lib/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../lib/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(function(){
+				// Trigger maximage
+				$('#maximage').maximage({
+					cssBackgroundSize: false, // We don't want to use background-size:cover for our custom size
+					backgroundSize: function( $item ){
+						// Contain Portrait
+						if ($item.data('h') > $item.data('w')) {
+							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
+								$item
+									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
+									.width($.Window.data('w'));
+							} else {
+								$item
+									.height($.Window.data('h'))
+									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
+							}
+						} else {
+							if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
+								$item
+									.height($.Window.data('h'))
+									.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
+							} else {
+								$item
+									.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
+									.width($.Window.data('w'));
+							}
+						}
+					},
+					onImagesLoaded: function(){
+						$('#maximage').fadeIn();
+					}
+				});
+			});
+		</script>
+		
+		<!-- DON'T USE THIS: Insert Google Analytics code here -->
+		<script type="text/javascript">
+			
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-733524-1']);
+		  _gaq.push(['_trackPageview']);
+			
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+  </body>
+</html>

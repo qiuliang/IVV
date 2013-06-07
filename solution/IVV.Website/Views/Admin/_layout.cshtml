@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+	<link href="~/Styles/admin.css" rel="stylesheet" />
+	<script src="~/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="~/Scripts/jquery-ui-1.10.2/ui/jquery-ui.js"></script>
+	<link href="~/Scripts/jquery-ui-1.10.2/themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<script src="~/Scripts/main.js"></script>
+	@RenderSection("head", false)
+<script type="text/javascript">
+$(function () {
+	$("#menu li.selected").prev("li").css("border-bottom", "none");
+	$("#menu li.selected").prepend("<div class='blueLine'></div>");
+	$("#menu li").hover(
+		function () {
+			$(this).addClass("hover");
+		}, function () {
+			$(this).removeClass("hover");
+	});
+
+	$("#dialog").dialog({
+		autoOpen: false,
+		modal: true,
+		show: {
+			effect: "fade",
+			duration: 500
+		},
+		hide: {
+			effect: "fade",
+			duration: 800
+		}
+	});
+});
+</script>
+</head>
+<body>
+    <div id="container">
+		 <div id="header">
+			 <img src="~/Images/Admin/logo.png" id="logo" />			 
+			 <div style="text-align:right;">
+				 <h1 style="float:left;">网站管理系统</h1>
+				 <ul>
+					 <li style="background:url(../Images/Admin/exit.png) left center no-repeat;">
+						 @Html.ActionLink("退出", "SignOut")</li>
+					 <li style="background:url(../Images/Admin/user.png) left center no-repeat;">@User.Identity.Name</li>
+				 </ul>
+				 &nbsp;
+			 </div>
+		 </div>
+		 <div id="navi">
+			 <ul>
+				 @MyHelper.RenderNav()
+			 </ul>
+			 &nbsp;
+		 </div>
+		 <div id="menu">
+			@MyHelper.RenderSubNav()
+		 </div>
+
+		 <div id="main">
+			 @RenderBody()
+		 </div>
+    </div>
+    @RenderSection("Scripts", false)
+</body>
+</html>

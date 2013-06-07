@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>@ViewBag.Title</title>
+<link href="Styles/main.css" rel="stylesheet" />
+<link href="Styles/page.css" rel="stylesheet" />
+	@RenderSection("head", false)
+</head>
+
+<body>
+<div id="container">
+	<div id="menu">
+		<a href="Index.html"><img src="Images/logo.png" alt="" /></a>
+		@RenderSection("menu", true)		
+
+		<p class="dot_bg">&nbsp;</p>
+		<p style="font-size:12px;">
+		<strong>IVV Home Decor & Table</strong><br />
+		Tel +39 055 944444<br />
+		Fax +39 055 944447<br />
+		E-mail info@ivvnet.it
+		</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<div class="bshare-custom icon-medium">
+			<a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+		<p>&nbsp;</p>
+		<p class="dot_bg">&nbsp;</p>
+		CREDITS
+	</div>
+
+	<div id="wrapper_right">
+		<img src="Images/border_corner.png" alt="" style="position:absolute;right:0;bottom:0;" />
+		<div id="wrapper_bottom">
+			<div id="content">
+				@RenderBody()
+			</div><!-- content  -->
+		</div><!-- wrapper_bottom -->
+	</div><!-- wrapper_right -->	
+</div>
+
+
+</body>
+</html>

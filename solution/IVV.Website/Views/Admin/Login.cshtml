@@ -1,0 +1,126 @@
+﻿@model IVV.Website.Models.LoginModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>系统登录</title>
+	<link href="~/Styles/admin.css" rel="stylesheet" />
+	<script src="~/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="~/Scripts/main.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("input[type='text'],input[type='password']").focusin(
+				function () {
+					$(this).addClass("focus");
+				}
+			).focusout(
+				function () {
+					$(this).removeClass("focus");
+				}
+			);
+
+			$("#imgCoder").click(function () {
+				$(this).attr("src",
+					"@Url.Content("~/Service/CheckImage.aspx?rnd=")" + Math.random());
+			});
+
+			$("#submit").click(function () {
+				submitForm("loginForm", "@Request.RawUrl");
+				return false;
+			});
+		    //
+		    $("#UserName").val("Admin");
+		    $("#Password").val("12345678");
+		});
+	</script>
+
+<style type="text/css">
+#navi {
+	border:none;
+	height:6px;
+	padding:5px 0 0;
+}
+body {
+	background:#fff;
+	color:#333;
+}
+
+#bottom {
+	font-size:12px;
+	font-family:Arial;
+	position:fixed;
+	bottom:25px;
+	text-align:center;
+	width:100%;
+	color:#888;
+}
+
+form#loginForm {	
+	width:240px;
+	margin:100px auto 0;
+}
+
+form#loginForm div {
+	margin-bottom:0.8em;
+	font-size:12px;
+	font-family:SimSun;
+	color:#333;
+}
+
+p.validation-note {
+	left:215px;
+	top:5px;
+}
+
+#imgCoder {
+	border:1px solid #ccc;
+	position:absolute;
+	bottom:0;
+	left:115px;
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+    <div id="container">
+		 <div id="header">
+			 <img src="~/Images/Admin/logo.png" id="logo" />			 
+			 <div style="text-align:right;">
+				 <h1 style="float:left;">网站管理系统33</h1>				
+				 &nbsp;
+			 </div>
+		 </div>
+		 <div id="navi"></div>
+
+		 <form id="loginForm" name="loginForm">
+			 <div>用户名：</div>
+			 <div style="margin-bottom:1.6em;position:relative;">@Html.TextBoxFor(x => x.UserName, new { @style="width:200px;", @class="textbox" })
+				 <p class="validation-note"></p>
+			 </div>
+
+			 <div>密　码：</div>
+			 <div style="margin-bottom:1.6em;position:relative;">@Html.PasswordFor(x=>x.Password,  new { @style="width:200px;", @class="textbox" })
+				 <p class="validation-note"></p>
+			 </div>
+
+			 <div>验证码：</div>
+			 <div style="position:relative;margin-top:1.5em;">
+				@Html.TextBoxFor(x => x.CheckCode, new { @style="width:100px;position:absolute;bottom:0;", @class="textbox" })
+				<img id="imgCoder" src="~/Service/CheckImage.aspx" alt="" 
+					title="看不清楚？点击换一张"  />	
+				 <input type="text" style="visibility:hidden;" />
+				 <p class="validation-note" style="top:-2px;"></p>
+			 </div>
+
+			 <div class="">&nbsp;</div>	 
+			 <a href="#" id="submit" class="button" style="width:160px;">登录</a>
+
+		 </form>
+		 <div id="bottom">
+			 Copyright &copy;2013 - @DateTime.Now.Year 青柠科技. All Rights Reserved.
+		 </div>
+    </div>
+
+</body>
+</html>

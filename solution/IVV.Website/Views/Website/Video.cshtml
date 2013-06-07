@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Video";
+    Layout = "~/Views/Website/_LayoutList.cshtml";
+}
+
+
+@section head{
+<style type="text/css">
+body {
+	background-image: url(images/dettaglio-dream.jpg);
+}
+</style>
+}
+
+@section menu{
+	@Html.Action("menu", "Website", new { name="视频" })
+}
+
+<h1>视频</h1>

@@ -1,0 +1,84 @@
+﻿body {
+	background:#fff url(../Images/Bg/dettaglio-multicolor2.jpg) right bottom no-repeat;
+	background-attachment:fixed;
+}
+
+#container {
+	width:900px;
+	padding:30px 0 0 30px;
+}
+
+#menu {
+	width:210px;
+	float:left;
+}
+
+#menu_list {
+	margin-top:20px;
+}
+
+#menu_list li {
+	margin-bottom:15px;
+	font-size:15px;
+}
+
+p.dot_arrow {
+	font-family:SimSun;
+	background:url(../Images/dot.png) center center repeat-x;
+	width:120px;
+	text-align:right;
+	color:#999;
+	float:right;
+}
+
+p.dot_bg {
+	background:url(../Images/dot.png) center center repeat-x;
+}
+
+p.dot_arrow span {
+	position:relative;
+	right:-3px;
+	top:0px;
+}
+
+#wrapper_right {
+	width:605px;
+	padding-right:4px;
+	background:url(../Images/border_right.png) right top repeat-y;
+	border:0px solid #fff;
+	position:relative;
+	margin-left:280px;
+}
+
+#wrapper_bottom {
+	background:url(../Images/border_bottom.png) left bottom repeat-x;
+	padding-bottom:4px;
+	border:0px solid #fff;
+}
+
+
+
+.img_normal {
+	border-top:1px solid #fff;
+	border-right:4px solid #fff;
+	border-bottom:4px solid #fff;
+	border-left:1px solid #fff;
+}
+
+.img_hover {
+	border-top:1px solid #ddd;
+	border-right:4px solid #ddd;
+	border-bottom:4px solid #ddd;
+	border-left:1px solid #ddd;
+}
+
+#content {
+	padding:40px 20px 20px 25px;
+	background:url(../Images/back-content.png) left top repeat;
+	color:#444;
+}
+
+#content h1 {
+	padding:0 0 30px;
+	font-size:20px;
+}

@@ -1,0 +1,77 @@
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\IVV.Website.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\IVV.Website.pdb
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\EntityFramework.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\Microsoft.Web.Infrastructure.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\Newtonsoft.Json.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Net.Http.Formatting.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Helpers.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Http.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Http.WebHost.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Mvc.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Razor.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.WebPages.Deployment.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.WebPages.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.WebPages.Razor.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\EntityFramework.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\Newtonsoft.Json.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Net.Http.Formatting.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Helpers.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Http.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Http.WebHost.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Mvc.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.Razor.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.WebPages.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.WebPages.Deployment.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\System.Web.WebPages.Razor.xml
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\EntityFramework.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.Http.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.WebPages.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\obj\x86\Debug\IVV.Website.csprojResolveAssemblyReference.cache
+D:\[XX科技]\I IVV\Solution\IVV.Website\obj\x86\Debug\IVV.Website.dll
+D:\[XX科技]\I IVV\Solution\IVV.Website\obj\x86\Debug\IVV.Website.pdb
+E:\github\ivv\solution\IVV.Website\bin\IVV.Website.dll
+E:\github\ivv\solution\IVV.Website\bin\IVV.Website.pdb
+E:\github\ivv\solution\IVV.Website\bin\EntityFramework.dll
+E:\github\ivv\solution\IVV.Website\bin\Microsoft.Web.Infrastructure.dll
+E:\github\ivv\solution\IVV.Website\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\github\ivv\solution\IVV.Website\bin\Newtonsoft.Json.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Net.Http.Formatting.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Helpers.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Http.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Http.WebHost.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Mvc.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Razor.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.WebPages.Deployment.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.WebPages.dll
+E:\github\ivv\solution\IVV.Website\bin\System.Web.WebPages.Razor.dll
+E:\github\ivv\solution\IVV.Website\bin\EntityFramework.xml
+E:\github\ivv\solution\IVV.Website\bin\Newtonsoft.Json.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Net.Http.Formatting.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Helpers.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Http.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Http.WebHost.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Mvc.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.Razor.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.WebPages.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.WebPages.Deployment.xml
+E:\github\ivv\solution\IVV.Website\bin\System.Web.WebPages.Razor.xml
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\EntityFramework.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.Helpers.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.Http.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.Mvc.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.Razor.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.WebPages.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+E:\github\ivv\solution\IVV.Website\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+E:\github\ivv\solution\IVV.Website\obj\x86\Debug\IVV.Website.dll
+E:\github\ivv\solution\IVV.Website\obj\x86\Debug\IVV.Website.pdb

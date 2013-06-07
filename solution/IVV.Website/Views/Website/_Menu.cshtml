@@ -1,0 +1,46 @@
+﻿@{
+	string selected = ViewBag.Selected;
+	string company = "";
+	string product = "";
+	string maintain = "";
+	string news = "";
+	string download = "";
+	string video = "";
+	string photo = "";
+	string contacts = "";
+	string stores = "";
+	
+	switch(selected){
+		case "公司介绍":
+			company = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "产品":
+			product = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "产品保养":
+			maintain = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "新闻":
+			news = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "下载":
+			download = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "视频":
+			video = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "画册":
+			photo = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "联系我们":
+			contacts = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;
+		case "商店":
+			stores = "<p class='dot_arrow'><span>&gt;</span></p>";
+			break;				
+	}		
+}
+
+<ul id="menu_list">
+	<li>@Html.Raw(company)<a href="company.aspx">公司介绍</a></li><li>@Html.Raw(product)<a href="product.aspx">产品</a></li><li>@Html.Raw(maintain)<a href="maintenance.aspx">产品保养</a></li><li>@Html.Raw(news)<a href="news.aspx">新闻</a></li><li>@Html.Raw(download)<a href="download.aspx">下载</a></li><li>@Html.Raw(video)<a href="video.aspx">视频</a></li><li>@Html.Raw(photo)<a href="gallery.aspx">画册</a></li><li>@Html.Raw(contacts)<a href="contact.aspx">联系我们</a></li><li>@Html.Raw(stores)<a href="Stores.aspx">商店</a></li>
+</ul>

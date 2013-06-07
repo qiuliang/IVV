@@ -1,0 +1,54 @@
+﻿@model IVV.Website.Models.CompanyModel
+@{
+    ViewBag.Title = "Copyright";
+}
+
+@section head{
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<link href="~/Scripts/ckeditor/contents.css" rel="stylesheet" />
+@if(false){
+	<script src="~/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="~/Scripts/jquery-ui-1.10.2/ui/jquery-ui.js"></script>
+ }
+<script type="text/javascript">
+$(function () {
+	$("#submit").click(function () {
+	    var company = CKEDITOR.instances.Copyright.getData();
+		var data = "Copyright=" + encodeURIComponent(company);
+		submitData(data, "@Request.RawUrl");
+		return false;
+	});
+});
+</script>
+}
+
+
+
+<form id="form1" name="form1" method="post">
+<table style="width:100%;">
+	<tr>
+		<td style="width:80px;" valign="top">
+			版权信息：
+		</td>
+		<td>
+			<div style="position:relative;">
+				@Html.TextAreaFor(x => x.Copyright, new { @class="ckeditor" })
+				<p class="validation-note" style="padding-top:8px;"></p>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			&nbsp;
+		</td>
+		<td style="padding-top:28px;">
+			<a href="#" id="submit" class="button" style="width:160px;">保存</a>
+		</td>
+	</tr>
+</table>
+</form>
+
+<div id="dialog" title="操作完成" style="display:none;">
+	
+</div>
+

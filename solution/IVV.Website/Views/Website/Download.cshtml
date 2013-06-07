@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "下载";
+    Layout = "~/Views/Website/_LayoutList.cshtml";
+}
+
+@section head{
+<style type="text/css">
+body {
+	background-image: url(images/dettaglio-eclipse.jpg);
+}
+
+#content table {
+	width:99%;
+	margin-top:2em;
+}
+
+#content table td {
+	text-align:center;
+	font-size:12px;
+	font-family:Verdana;
+}
+
+#content table td p {
+	margin-top:8px;
+	line-height:140%;
+}
+
+#content table img {
+	border:1px solid #ccc;
+}
+</style>
+}
+
+@section menu{
+	@Html.Action("Menu", "Website", new { name="下载"})
+}
+
+<h1>下载</h1>
+
+<table>
+	<tr>
+		<td>
+			<a href="~/Downloads/catalogo2013.pdf"><img src="~/Images/catalogo-grey.png" /></a>
+			<p>Download catalog pdf <br />
+			IVV 2013 <br />
+			(57 MB)</p>
+		</td>
+		<td>
+			<a href="~/Downloads/catalogo_pe_2013.pdf"><img src="~/Images/catalogo-primavera-2013.jpg" /></a>
+			<p>Download catalog pdf<br />
+SPRING-SUMMER IVV 2013<br />
+(9 MB)</p>
+
+		</td>
+	</tr>
+</table>
+
+<p style="height:1px;background:#aaa;margin:20px 0 0;"></p>
+<br /><br />

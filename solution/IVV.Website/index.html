@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>http://www.ivvnet.it/</title>
+	<link rel="stylesheet" href="Scripts/MaxImage-master/lib/css/jquery.maximage.css?v=1.2" type="text/css" media="screen" />
+	<link rel="stylesheet" href="Scripts/MaxImage-master/lib/css/screen.css?v=1.2" type="text/css" media="screen" />
+	<link href="Styles/main.css" rel="stylesheet" />
+	<script src="Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="Scripts/MaxImage-master/lib/js/jquery.cycle.all.js" type="text/javascript"  charset="utf-8"></script>
+	<script src="Scripts/MaxImage-master/lib/js/jquery.maximage.js" type="text/javascript"  charset="utf-8"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		$(function () {
+			$('#maximage').maximage({
+				isBackground: true,
+				slideShow: true,
+				slideShowTitle: false,
+				slideDelay: 5, //secondi
+				maxFollows: 'height',
+				overflow: 'auto',//importante se  necessario lo scroll della pagina per i contenuti
+				resizeMsg: { show: false }
+			});
+
+			$("#link_menu").click(function(){ 
+				$("#menu_hide").slideToggle("slow");
+				return false;
+			});
+
+			$("#menu_hide li").hover(function () {
+				$(this).css("width", "270px");
+			}, function () {
+				$(this).css("width", "230px");
+			});
+
+		    //加载底部copyright
+			$.post("/service/getfooter.aspx", function (d) {
+			    $("#address").html(d.Copyright);
+			});
+		});
+	</script>
+
+<style type="text/css">#menu {
+	margin-left:45px;
+	font-size:14px;
+	
+}
+
+#menu_top {
+	width:200px;
+	background-image:url(Images/back-content.png);
+	padding:15px 15px 10px 15px;
+	margin-bottom:3px;
+}
+
+#menu_top div{
+
+}
+
+#menu_hide {
+	font-size:14px;
+}
+
+#menu_hide li {
+	background-image:url(Images/back-content.png);
+	padding:4px 0;
+	margin-bottom:3px;	
+	text-indent:15px;
+	width:230px;
+}
+
+#menu_hide li a {
+	display:block;	
+}
+
+#footer {
+	height:100px;
+	background:url(Images/back-tras.png);
+	position:absolute;
+	left:-2px;
+	bottom:4px;
+	width:100%;
+	overflow-x:hidden;
+}
+
+#footer #address {
+	font-size:12px;
+	text-align:center;
+	color:#888;
+	margin:55px 10px 0 145px;
+}
+</style>
+</head>
+
+<body>
+	<div id="maximage">
+		<img src="Images/slide/3amb_Special.jpg" alt=""  />
+		<img src="Images/slide/4amb_infiore.jpg" alt=""  />
+		<img src="Images/slide/1macro_speedy.jpg" alt="" />		
+		<img src="Images/slide/5amb_Menhir.jpg" alt="" />
+		<img src="Images/slide/6macro_one_farfalla.jpg" alt="" />
+	</div>
+
+<div id="container">
+	<div id="menu">
+	<div id="menu_top">
+		<img src="Images/logo.png" />		
+			<div><a href="#" id="link_menu">菜 单</a></div>
+	</div><!-- menu_top -->
+	
+	<ul id="menu_hide" style="display:none;">
+<li><a href="company.aspx">公司介绍</a></li><li><a href="products.aspx">产品</a></li><li><a href="maintenance.aspx">产品保养</a></li><li><a href="news.aspx">新闻</a></li><li><a href="download.aspx">下载</a></li><li><a href="video.aspx">视频</a></li><li><a href="gallery.aspx">画册</a></li><li><a href="contact.aspx">联系我们</a></li><li><a href="Stores.aspx">商店</a></li>
+	</ul>
+		
+	</div><!-- menu -->
+	
+	<div id="footer">
+		
+		<img src="Images/logo-ivv-lighting.png" style="float:left;margin-left:50px;" />
+		
+		<div class="bshare-custom icon-medium" style="float:right;margin:0px 40px 0 0;">
+			<a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+		<div id="address">
+			
+		</div>
+	</div><!--footer-->
+</div><!-- container -->
+
+
+</body>
+</html>

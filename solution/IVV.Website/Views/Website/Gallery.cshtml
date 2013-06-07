@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "画册";
+    Layout = "~/Views/Website/_LayoutList.cshtml";
+}
+
+@section menu{
+	@Html.Action("menu", "Website", new { name = "画册" })
+}
+
+@section head{
+<link href="~/Scripts/Slider/slider.css" rel="stylesheet" />
+<style type="text/css">
+body {
+	background-image: url(images/dettaglio-magnolia.jpg);
+}
+</style>
+}
+
+<h1>画册</h1>
+<div id="slider-container1">
+    
+    <div class="sl_images">
+<a href="#"><img src="http://www.ivvnet.it/photogallery/01.jpg" id="img0" title="One"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/02.jpg" id="img1" title="Tessuti"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/03.jpg" id="img2" title="Multicolor"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/04.jpg" id="img3" title="Multicolor"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/05.jpg" id="img4" title="Multicolor"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/06.jpg" id="img5" title="Mon Amour"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/07.jpg" id="img6" title="Magnolia"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/08.jpg" id="img7" title="Aria"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/09.jpg" id="img8" title="Vizio"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/10.jpg" id="img9" title="Special"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/11.jpg" id="img10" title="Special"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/12.jpg" id="img11" title="Special"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/13.jpg" id="img12" title="Roseto"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/14.jpg" id="img13" title="Primula"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/15.jpg" id="img14" title="Bisanzio"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/16.jpg" id="img15" title="Multicolor"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/17.jpg" id="img16" title="Multicolor"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/18.jpg" id="img17" title="Monamour"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/19.jpg" id="img18" title="Monamour"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/20.jpg" id="img19" title="Menhir"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/21.jpg" id="img20" title="Loto"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/22.jpg" id="img21" title="Infiore"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/23.jpg" id="img22" title="Infiore"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/24.jpg" id="img23" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/25.jpg" id="img24" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/26.jpg" id="img25" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/27.jpg" id="img26" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/28.jpg" id="img27" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/29.jpg" id="img28" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/30.jpg" id="img29" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/31.jpg" id="img30" title="diamantè"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/32.jpg" id="img31" title="Allinone"/></a>
+<a href="#"><img src="http://www.ivvnet.it/photogallery/33.jpg" id="img32" title="Allinone"/></a>
+
+</div><!--end sl_images-->
+<div style="position:absolute; height:25px; width:100%; left:0; bottom:0; z-index:40;"></div>
+<div class="sl_bullets">
+  <div>
+<a href="#img0" title=""><img src="http://www.ivvnet.it/photogallery/01s.jpg"/></a>
+<a href="#img1" title=""><img src="http://www.ivvnet.it/photogallery/02s.jpg"/></a>
+<a href="#img2" title=""><img src="http://www.ivvnet.it/photogallery/03s.jpg"/></a>
+<a href="#img3" title=""><img src="http://www.ivvnet.it/photogallery/04s.jpg"/></a>
+<a href="#img4" title=""><img src="http://www.ivvnet.it/photogallery/05s.jpg"/></a>
+<a href="#img5" title=""><img src="http://www.ivvnet.it/photogallery/06s.jpg"/></a>
+<a href="#img6" title=""><img src="http://www.ivvnet.it/photogallery/07s.jpg"/></a>
+<a href="#img7" title=""><img src="http://www.ivvnet.it/photogallery/08s.jpg"/></a>
+<a href="#img8" title=""><img src="http://www.ivvnet.it/photogallery/09s.jpg"/></a>
+<a href="#img9" title=""><img src="http://www.ivvnet.it/photogallery/10s.jpg"/></a>
+<a href="#img10" title=""><img src="http://www.ivvnet.it/photogallery/11s.jpg"/></a>
+<a href="#img11" title=""><img src="http://www.ivvnet.it/photogallery/12s.jpg"/></a>
+<a href="#img12" title=""><img src="http://www.ivvnet.it/photogallery/13s.jpg"/></a>
+<a href="#img13" title=""><img src="http://www.ivvnet.it/photogallery/14s.jpg"/></a>
+<a href="#img14" title=""><img src="http://www.ivvnet.it/photogallery/15s.jpg"/></a>
+<a href="#img15" title=""><img src="http://www.ivvnet.it/photogallery/16s.jpg"/></a>
+<a href="#img16" title=""><img src="http://www.ivvnet.it/photogallery/17s.jpg"/></a>
+<a href="#img17" title=""><img src="http://www.ivvnet.it/photogallery/18s.jpg"/></a>
+<a href="#img18" title=""><img src="http://www.ivvnet.it/photogallery/19s.jpg"/></a>
+<a href="#img19" title=""><img src="http://www.ivvnet.it/photogallery/20s.jpg"/></a>
+<a href="#img20" title=""><img src="http://www.ivvnet.it/photogallery/21s.jpg"/></a>
+<a href="#img21" title=""><img src="http://www.ivvnet.it/photogallery/22s.jpg"/></a>
+<a href="#img22" title=""><img src="http://www.ivvnet.it/photogallery/23s.jpg"/></a>
+<a href="#img23" title=""><img src="http://www.ivvnet.it/photogallery/24s.jpg"/></a>
+<a href="#img24" title=""><img src="http://www.ivvnet.it/photogallery/25s.jpg"/></a>
+<a href="#img25" title=""><img src="http://www.ivvnet.it/photogallery/26s.jpg"/></a>
+<a href="#img26" title=""><img src="http://www.ivvnet.it/photogallery/27s.jpg"/></a>
+<a href="#img27" title=""><img src="http://www.ivvnet.it/photogallery/28s.jpg"/></a>
+<a href="#img28" title=""><img src="http://www.ivvnet.it/photogallery/29s.jpg"/></a>
+<a href="#img29" title=""><img src="http://www.ivvnet.it/photogallery/29s.jpg"/></a>
+<a href="#img30" title=""><img src="http://www.ivvnet.it/photogallery/30s.jpg"/></a>
+<a href="#img31" title=""><img src="http://www.ivvnet.it/photogallery/31s.jpg"/></a>
+<a href="#img32" title=""><img src="http://www.ivvnet.it/photogallery/32s.jpg"/></a>
+<a href="#img33" title=""><img src="http://www.ivvnet.it/photogallery/33s.jpg"/></a>
+</div><!--end bullets-->
+
+</div><!--end slider-container1-->
+	
+<script src="~/Scripts/Slider/slider.js"></script>

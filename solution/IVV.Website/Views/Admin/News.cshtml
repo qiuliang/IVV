@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "News";
+    var list = ViewData["list"] as IVV.Website.ClassLib.PageList<IVV.Website.DataModel.Post>;
+}
+
+@section head{
+
+@if(false){
+	<script src="~/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="~/Scripts/jquery-ui-1.10.2/ui/jquery-ui.js"></script>
+ }
+
+}
+
+<div class="search">
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td style="width:50px;">标题名称</td>
+            <td style="width:150px;">@Html.TextBox("arcTitle")</td>
+            
+            <td><input type="submit" value="查 询" /></td>
+        </tr>
+        
+    </table>
+}
+</div>
+
+<table>
+    <thead>
+
+        <tr>
+            <th>编号</th>
+            <th>标题</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in list){
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>
+                @Html.ActionLink("编辑","addnews","admin",new {id = item.Id},null)
+                @Html.ActionLink("删除","delnews","admin",new {id = item.Id},new { @class="del"})
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@{
+var pars = new Dictionary<string, object>();
+        
+    Html.RenderPager("_PageBar", list.Count, 10, (int)ViewData["pageIndex"], "/admin/news", pars);
+}
+
+<p>
+    @Html.ActionLink("添加新闻","AddNews")
+</p>
+<div id="dialog" title="操作完成" style="display:none;">
+	
+</div>
+

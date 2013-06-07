@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "联系我们";
+    Layout = "~/Views/Website/_LayoutList.cshtml";
+}
+
+
+@section head{
+<style type="text/css">
+body {
+	background-image: url(images/dettaglio-niagara.jpg);
+}
+#content {
+	font-size:12px;
+}
+
+table td {
+	padding:6px 0 5px;
+}
+
+.textBox {
+	border:1px solid #eaeaea;
+	background:url(images/input_bg.png) left top repeat;
+	padding:4px;
+	font-size:14px;
+	width:280px;
+}
+</style>
+}
+
+@section menu{
+	@Html.Action("menu", "Website", new { name="联系我们" })
+}
+
+<h1>联系我们</h1>
+<br /><br />
+
+<p><strong>Opening hours</strong></p>
+<p>Monday: 16.00-20.00<br />
+    Tuesday - Saturday: 9.00-13.00 16.00-20.00<br />
+</p><br />
+
+<div><p><strong>IVV SHOP</strong><br />
+Lungarno Guido Reni n.60 San Giovanni V.no (AR)<br />
+Phone + 39.055.942619</p>
+</div>
+<br />
+<div>
+<p><strong>IVV OUTLET Design Outlet Italiano - welcHome Santhi&agrave;</strong><br />
+Corso 25 Aprile, Loc. Moleto Sud, Santhi&agrave; (VC) </p>
+</div>
+
+<br /><br /><br />
+<form>
+	<table>
+		<tr>
+			<td style="width:120px;">Name: </td>
+			<td><input type="text" class="textBox" /></td>
+		</tr>
+		<tr>
+			<td>Surname:</td>
+			<td><input type="text" class="textBox" /></td>
+		</tr>
+		<tr>
+			<td>Company:</td>
+			<td><input type="text" class="textBox" /></td>
+		</tr>
+		<tr>
+			<td>Country:</td>
+			<td><input type="text" class="textBox" /></td>
+		</tr>
+		<tr>
+			<td>Phone:</td>
+			<td><input type="text" class="textBox" /></td>
+		</tr>
+		<tr>
+			<td>E-mail:</td>
+			<td><input type="text" class="textBox" /></td>
+		</tr>
+		<tr>
+			<td valign="top">Message:</td>
+			<td>
+				<textarea class="textBox" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>保证隐私 <input type="checkbox" /><br />
+				输入验证码：<br />
+				<img src="~/Images/checkcode.png" /> <input type="text" class="textBox" style="width:140px" /><br />
+				<img src="~/Images/form_send.png" />
+			</td>
+		</tr>
+
+	</table>
+
+
+</form>
+
+
+

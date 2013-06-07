@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Uploadify</title>
+	<script src="~/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
+	<link href="~/uploadify/uploadify2.css" rel="stylesheet" />
+	<style type="text/css">
+		.demo {
+			border:0px solid blue;
+			background:#fff;
+			color:#333;
+			text-align:center;
+			font-size:12px;
+			width:100px;
+			padding:0;
+			min-width:0;
+			text-decoration:underline;
+		}
+	</style>
+</head>
+<body>
+    <h1>Uploadify Demo</h1>
+	<form name="form1" id="form1" action="d">
+		<div id="queue"></div>
+		<input type="text" name="userName" id="userName" />
+		<input id="file_upload" name="file_upload" type="file">
+	</form>	
+
+	<script type="text/javascript">
+		var selectedFiles = 0;
+		$(function() {			
+			$('#file_upload').uploadify({
+				'formData': {
+					'timestamp' : 'abc',
+					'token': 'test',
+					'userName': function(){
+						return $("#userName").val();
+					}
+				},
+				'width':100,
+				'multi':true,
+				'auto': false,
+				'buttonText': '选择文件',
+				'buttonClass':'demo',
+				'swf': '/Scripts/uploadify/uploadify.swf',
+				'uploader': 'ImageUpload.aspx',
+				'onQueueComplete': function (queueData) {
+					alert(queueData.uploadsSuccessful + "success!");
+				},
+				'onSelect': function (file) {
+					selectedFiles++;
+				},
+				'onUploadComplete': function () {
+					selectedFiles--;
+				},
+				'onCancel': function () {
+					selectedFiles--;
+				}
+			});
+
+			$("#submitForm").click(function () {			
+				alert(selectedFiles);
+				return false;
+			});
+		});
+	</script>
+
+	<p>
+		<a href="javascript:$('#file_upload').uploadify('upload', '*')">Upload Files</a>
+		<a href="#" id="submitForm">upload</a>
+	</p>
+</body>
+</html>

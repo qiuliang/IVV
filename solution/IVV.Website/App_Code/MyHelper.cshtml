@@ -1,0 +1,29 @@
+﻿@*输出左侧导航*@
+@helper RenderSubNav(){
+    var a = Request.RequestContext.RouteData.Values["action"] as string;
+    a = a.ToLower();
+    @:<ul>
+    if(a == "company" || a == "copyright"){
+        <li class="first @if(a=="company"){<text>selected</text>}"><a href="/admin/company.aspx">公司介绍</a></li>
+	    <li class="@if(a=="copyright"){<text>selected</text>}"><a href="/admin/copyright.aspx">版权信息</a></li>
+    }
+    else if(a == "news" || a =="addnews" ){
+        <li class="first @if(a=="news"){<text>selected</text>}"><a href="/admin/news.aspx">新闻列表</a></li>
+        <li class="first @if(a=="addnews"){<text>selected</text>}"><a href="/admin/addnews.aspx">添加新闻</a></li>
+    }
+    @:</ul>
+}
+
+@*输出主导航*@
+@helper RenderNav(){
+    var a = Request.RequestContext.RouteData.Values["action"] as string;
+    a = a.ToLower();
+    var conf = new string[]{"company","copyright"};
+    var news = new string[]{"news","addnews"};
+    var prod = new string[]{"product"};
+    <text>
+    <li class="@if(conf.Contains(a)){<text>selected</text>}"><a href="/admin/company.aspx">网站设置</a></li>
+    <li class="@if(news.Contains(a)){<text>selected</text>}"><a href="/admin/news.aspx">新闻管理</a></li>
+    <li class="@if(prod.Contains(a)){<text>selected</text>}"><a href="/admin/product.aspx">产品管理</a></li>
+    </text>
+}

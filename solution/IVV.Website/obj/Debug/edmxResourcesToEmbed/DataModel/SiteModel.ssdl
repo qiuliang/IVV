@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="ProductCategory" EntityType="DataModel.Store.ProductCategory" store:Type="Tables" />
+    <EntitySet Name="SiteInfo" EntityType="DataModel.Store.SiteInfo" store:Type="Tables" />
+    <EntitySet Name="SysUser" EntityType="DataModel.Store.SysUser" store:Type="Tables" />
+  </EntityContainer>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" />
+    <Property Name="Cover" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SiteInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Company" Type="nvarchar" MaxLength="8000" />
+    <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Copyright" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="SysUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" />
+    <Property Name="PWD" Type="nvarchar" Nullable="false" />
+  </EntityType>
+</Schema>

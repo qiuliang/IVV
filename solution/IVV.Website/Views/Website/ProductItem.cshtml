@@ -1,0 +1,95 @@
+﻿@model IVV.Website.Models.ProductModel
+@{
+    Layout = "~/Views/Website/_layoutProduct.cshtml";
+    var split = new string[]{"*$*"};
+}
+
+<div id="dropList">
+
+		<div style="text-align:right;">
+			<img src="~/Images/button-home-big-on.png" />
+			<img src="~/Images/button-table-off.png" style="width:100px;" />
+		</div>
+
+		<div style="clear:right;">
+		大类：<br />
+		<select id="selHead">
+            <option value="">请选择</option>
+			@foreach (var item in Model.CategoryList) { 
+            <option value="@item.Id" @if(Model.Item.CategoryId == item.Id){<text>selected</text>}>@item.Name</option>
+            }
+		</select>
+		</div>
+
+		<div style="clear:right;">
+		小类：<br />
+		<select id="selSub">
+            <option value="">请选择</option>
+			@*@foreach (var item in Model.SubCategoryList) { 
+            <option value="@item" @if(Model.Item.SubCategory == item){<text>selected</text>}>@item</option>
+            }*@
+            @foreach (var item in Model.SubCategoryList) {
+               var arr = item.Split(split,StringSplitOptions.RemoveEmptyEntries);
+               if (arr[0] == Model.Item.CategoryId.ToString()) { 
+                    <option value="@arr[1]" @if(Model.Item.SubCategory == arr[1]){<text>selected</text>}>@arr[1]</option>
+                }
+       
+            }
+		</select>
+		</div>	
+
+		<div style="clear:right;">
+		颜色：<br />
+		<select id="selColor">
+			<option value="">请选择</option>
+			@foreach (var item in Model.ColorList) { 
+            <option value="@item" @if(Model.Item.Color == item){<text>selected</text>}>@item</option>
+            }
+		</select>
+		</div>
+	</div>
+
+<div id="main">
+	<div class="catScheda">
+	
+	<h2>@Model.Item.Name</h2>
+	<p>&nbsp;</p>
+    <p><a href="@Model.Item.ImgUrl" alt="@Model.Item.Name" rel="lightbox-cat">
+        <img src="@Model.Item.ImgUrl" class="bordoOmbra" alt="@Model.Item.Name" >
+
+       </a>
+
+    </p>
+
+	<p class="fontSmall">@Model.Item.Name</p>
+	<p>&nbsp;</p>
+	<p>@Model.CategoryList.SingleOrDefault(t=>t.Id == Model.Item.CategoryId).Name  @Model.Item.SubCategory @Model.Item.Color</p>
+
+    
+    <div id="photo_small">
+		<a href="~/Images/photo/b1b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b1.jpg" /></a>
+		<a href="~/Images/photo/b2b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b2.jpg" /></a>
+		<a href="~/Images/photo/b3b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b3.jpg" /></a>
+	</div>
+        
+	@*<p><i><a href="catalog-home-decor.asp?p1=LUCKY&amp;p2=&amp;p3=">Torna alla collezione</a></i></p>      *@
+</div>
+
+	
+
+	</div>
+
+<script type="text/javascript">
+    $("#selHead").change(function () {
+        window.location.href = "/ProductList.aspx?type=in&c=" + $(this).val();
+    });
+
+    $("#selSub").change(function () {
+        window.location.href = "/ProductList.aspx?type=in&c=" + $("#selHead").val() + "&sc=" + $(this).val();
+    });
+
+    $("#selColor").change(function () {
+        window.location.href = "/ProductList.aspx?type=in&c=" + $("#selHead").val() + "&sc=" + $("#selSub").val() + "&color=" + $(this).val();
+    });
+
+</script>

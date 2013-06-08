@@ -68,22 +68,6 @@ namespace GenSqliteEdmx
         /// <summary>
         /// 没有元数据文档可用。
         /// </summary>
-        public ObjectSet<ProductCategory> ProductCategory
-        {
-            get
-            {
-                if ((_ProductCategory == null))
-                {
-                    _ProductCategory = base.CreateObjectSet<ProductCategory>("ProductCategory");
-                }
-                return _ProductCategory;
-            }
-        }
-        private ObjectSet<ProductCategory> _ProductCategory;
-    
-        /// <summary>
-        /// 没有元数据文档可用。
-        /// </summary>
         public ObjectSet<SiteInfo> SiteInfo
         {
             get
@@ -128,18 +112,90 @@ namespace GenSqliteEdmx
             }
         }
         private ObjectSet<Post> _Post;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<FileInfo> FileInfo
+        {
+            get
+            {
+                if ((_FileInfo == null))
+                {
+                    _FileInfo = base.CreateObjectSet<FileInfo>("FileInfo");
+                }
+                return _FileInfo;
+            }
+        }
+        private ObjectSet<FileInfo> _FileInfo;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Video> Video
+        {
+            get
+            {
+                if ((_Video == null))
+                {
+                    _Video = base.CreateObjectSet<Video>("Video");
+                }
+                return _Video;
+            }
+        }
+        private ObjectSet<Video> _Video;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<NoteBook> NoteBook
+        {
+            get
+            {
+                if ((_NoteBook == null))
+                {
+                    _NoteBook = base.CreateObjectSet<NoteBook>("NoteBook");
+                }
+                return _NoteBook;
+            }
+        }
+        private ObjectSet<NoteBook> _NoteBook;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<Product> Product
+        {
+            get
+            {
+                if ((_Product == null))
+                {
+                    _Product = base.CreateObjectSet<Product>("Product");
+                }
+                return _Product;
+            }
+        }
+        private ObjectSet<Product> _Product;
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        public ObjectSet<ProductCategory> ProductCategory
+        {
+            get
+            {
+                if ((_ProductCategory == null))
+                {
+                    _ProductCategory = base.CreateObjectSet<ProductCategory>("ProductCategory");
+                }
+                return _ProductCategory;
+            }
+        }
+        private ObjectSet<ProductCategory> _ProductCategory;
 
         #endregion
 
         #region AddTo 方法
-    
-        /// <summary>
-        /// 用于向 ProductCategory EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
-        /// </summary>
-        public void AddToProductCategory(ProductCategory productCategory)
-        {
-            base.AddObject("ProductCategory", productCategory);
-        }
     
         /// <summary>
         /// 用于向 SiteInfo EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
@@ -164,6 +220,46 @@ namespace GenSqliteEdmx
         {
             base.AddObject("Post", post);
         }
+    
+        /// <summary>
+        /// 用于向 FileInfo EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToFileInfo(FileInfo fileInfo)
+        {
+            base.AddObject("FileInfo", fileInfo);
+        }
+    
+        /// <summary>
+        /// 用于向 Video EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToVideo(Video video)
+        {
+            base.AddObject("Video", video);
+        }
+    
+        /// <summary>
+        /// 用于向 NoteBook EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToNoteBook(NoteBook noteBook)
+        {
+            base.AddObject("NoteBook", noteBook);
+        }
+    
+        /// <summary>
+        /// 用于向 Product EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToProduct(Product product)
+        {
+            base.AddObject("Product", product);
+        }
+    
+        /// <summary>
+        /// 用于向 ProductCategory EntitySet 添加新对象的方法，已弃用。请考虑改用关联的 ObjectSet&lt;T&gt; 属性的 .Add 方法。
+        /// </summary>
+        public void AddToProductCategory(ProductCategory productCategory)
+        {
+            base.AddObject("ProductCategory", productCategory);
+        }
 
         #endregion
 
@@ -172,6 +268,526 @@ namespace GenSqliteEdmx
     #endregion
 
     #region 实体
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="FileInfo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FileInfo : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 FileInfo 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="fileName">FileName 属性的初始值。</param>
+        /// <param name="originalName">OriginalName 属性的初始值。</param>
+        /// <param name="url">Url 属性的初始值。</param>
+        /// <param name="length">Length 属性的初始值。</param>
+        /// <param name="createDate">CreateDate 属性的初始值。</param>
+        /// <param name="physicalPath">PhysicalPath 属性的初始值。</param>
+        public static FileInfo CreateFileInfo(global::System.Int64 id, global::System.String fileName, global::System.String originalName, global::System.String url, global::System.Int64 length, global::System.DateTime createDate, global::System.String physicalPath)
+        {
+            FileInfo fileInfo = new FileInfo();
+            fileInfo.Id = id;
+            fileInfo.FileName = fileName;
+            fileInfo.OriginalName = originalName;
+            fileInfo.Url = url;
+            fileInfo.Length = length;
+            fileInfo.CreateDate = createDate;
+            fileInfo.PhysicalPath = physicalPath;
+            return fileInfo;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FileName
+        {
+            get
+            {
+                return _FileName;
+            }
+            set
+            {
+                OnFileNameChanging(value);
+                ReportPropertyChanging("FileName");
+                _FileName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FileName");
+                OnFileNameChanged();
+            }
+        }
+        private global::System.String _FileName;
+        partial void OnFileNameChanging(global::System.String value);
+        partial void OnFileNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String OriginalName
+        {
+            get
+            {
+                return _OriginalName;
+            }
+            set
+            {
+                OnOriginalNameChanging(value);
+                ReportPropertyChanging("OriginalName");
+                _OriginalName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("OriginalName");
+                OnOriginalNameChanged();
+            }
+        }
+        private global::System.String _OriginalName;
+        partial void OnOriginalNameChanging(global::System.String value);
+        partial void OnOriginalNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                OnUrlChanging(value);
+                ReportPropertyChanging("Url");
+                _Url = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Url");
+                OnUrlChanged();
+            }
+        }
+        private global::System.String _Url;
+        partial void OnUrlChanging(global::System.String value);
+        partial void OnUrlChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Length
+        {
+            get
+            {
+                return _Length;
+            }
+            set
+            {
+                OnLengthChanging(value);
+                ReportPropertyChanging("Length");
+                _Length = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Length");
+                OnLengthChanged();
+            }
+        }
+        private global::System.Int64 _Length;
+        partial void OnLengthChanging(global::System.Int64 value);
+        partial void OnLengthChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ExtName
+        {
+            get
+            {
+                return _ExtName;
+            }
+            set
+            {
+                OnExtNameChanging(value);
+                ReportPropertyChanging("ExtName");
+                _ExtName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ExtName");
+                OnExtNameChanged();
+            }
+        }
+        private global::System.String _ExtName;
+        partial void OnExtNameChanging(global::System.String value);
+        partial void OnExtNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private global::System.DateTime _CreateDate;
+        partial void OnCreateDateChanging(global::System.DateTime value);
+        partial void OnCreateDateChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ThumbnailUrl
+        {
+            get
+            {
+                return _ThumbnailUrl;
+            }
+            set
+            {
+                OnThumbnailUrlChanging(value);
+                ReportPropertyChanging("ThumbnailUrl");
+                _ThumbnailUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ThumbnailUrl");
+                OnThumbnailUrlChanged();
+            }
+        }
+        private global::System.String _ThumbnailUrl;
+        partial void OnThumbnailUrlChanging(global::System.String value);
+        partial void OnThumbnailUrlChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PhysicalPath
+        {
+            get
+            {
+                return _PhysicalPath;
+            }
+            set
+            {
+                OnPhysicalPathChanging(value);
+                ReportPropertyChanging("PhysicalPath");
+                _PhysicalPath = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PhysicalPath");
+                OnPhysicalPathChanged();
+            }
+        }
+        private global::System.String _PhysicalPath;
+        partial void OnPhysicalPathChanging(global::System.String value);
+        partial void OnPhysicalPathChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="NoteBook")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class NoteBook : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 NoteBook 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="name">Name 属性的初始值。</param>
+        /// <param name="phone">Phone 属性的初始值。</param>
+        /// <param name="email">Email 属性的初始值。</param>
+        /// <param name="message">Message 属性的初始值。</param>
+        /// <param name="createDate">CreateDate 属性的初始值。</param>
+        public static NoteBook CreateNoteBook(global::System.Int64 id, global::System.String name, global::System.String phone, global::System.String email, global::System.String message, global::System.DateTime createDate)
+        {
+            NoteBook noteBook = new NoteBook();
+            noteBook.Id = id;
+            noteBook.Name = name;
+            noteBook.Phone = phone;
+            noteBook.Email = email;
+            noteBook.Message = message;
+            noteBook.CreateDate = createDate;
+            return noteBook;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Surname
+        {
+            get
+            {
+                return _Surname;
+            }
+            set
+            {
+                OnSurnameChanging(value);
+                ReportPropertyChanging("Surname");
+                _Surname = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Surname");
+                OnSurnameChanged();
+            }
+        }
+        private global::System.String _Surname;
+        partial void OnSurnameChanging(global::System.String value);
+        partial void OnSurnameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Company
+        {
+            get
+            {
+                return _Company;
+            }
+            set
+            {
+                OnCompanyChanging(value);
+                ReportPropertyChanging("Company");
+                _Company = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Company");
+                OnCompanyChanged();
+            }
+        }
+        private global::System.String _Company;
+        partial void OnCompanyChanging(global::System.String value);
+        partial void OnCompanyChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Country
+        {
+            get
+            {
+                return _Country;
+            }
+            set
+            {
+                OnCountryChanging(value);
+                ReportPropertyChanging("Country");
+                _Country = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Country");
+                OnCountryChanged();
+            }
+        }
+        private global::System.String _Country;
+        partial void OnCountryChanging(global::System.String value);
+        partial void OnCountryChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Phone
+        {
+            get
+            {
+                return _Phone;
+            }
+            set
+            {
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
+            }
+        }
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Message
+        {
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                OnMessageChanging(value);
+                ReportPropertyChanging("Message");
+                _Message = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Message");
+                OnMessageChanged();
+            }
+        }
+        private global::System.String _Message;
+        partial void OnMessageChanging(global::System.String value);
+        partial void OnMessageChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private global::System.DateTime _CreateDate;
+        partial void OnCreateDateChanging(global::System.DateTime value);
+        partial void OnCreateDateChanged();
+
+        #endregion
+
+    
+    }
     
     /// <summary>
     /// 没有元数据文档可用。
@@ -359,26 +975,28 @@ namespace GenSqliteEdmx
     /// <summary>
     /// 没有元数据文档可用。
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ProductCategory")]
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Product")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class ProductCategory : EntityObject
+    public partial class Product : EntityObject
     {
         #region 工厂方法
     
         /// <summary>
-        /// 创建新的 ProductCategory 对象。
+        /// 创建新的 Product 对象。
         /// </summary>
         /// <param name="id">Id 属性的初始值。</param>
         /// <param name="name">Name 属性的初始值。</param>
-        /// <param name="cover">Cover 属性的初始值。</param>
-        public static ProductCategory CreateProductCategory(global::System.Int32 id, global::System.String name, global::System.String cover)
+        /// <param name="categoryId">CategoryId 属性的初始值。</param>
+        /// <param name="subCategoryId">SubCategoryId 属性的初始值。</param>
+        public static Product CreateProduct(global::System.Int64 id, global::System.String name, global::System.Int64 categoryId, global::System.Int64 subCategoryId)
         {
-            ProductCategory productCategory = new ProductCategory();
-            productCategory.Id = id;
-            productCategory.Name = name;
-            productCategory.Cover = cover;
-            return productCategory;
+            Product product = new Product();
+            product.Id = id;
+            product.Name = name;
+            product.CategoryId = categoryId;
+            product.SubCategoryId = subCategoryId;
+            return product;
         }
 
         #endregion
@@ -390,7 +1008,7 @@ namespace GenSqliteEdmx
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 Id
+        public global::System.Int64 Id
         {
             get
             {
@@ -408,8 +1026,213 @@ namespace GenSqliteEdmx
                 }
             }
         }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 CategoryId
+        {
+            get
+            {
+                return _CategoryId;
+            }
+            set
+            {
+                OnCategoryIdChanging(value);
+                ReportPropertyChanging("CategoryId");
+                _CategoryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryId");
+                OnCategoryIdChanged();
+            }
+        }
+        private global::System.Int64 _CategoryId;
+        partial void OnCategoryIdChanging(global::System.Int64 value);
+        partial void OnCategoryIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 SubCategoryId
+        {
+            get
+            {
+                return _SubCategoryId;
+            }
+            set
+            {
+                OnSubCategoryIdChanging(value);
+                ReportPropertyChanging("SubCategoryId");
+                _SubCategoryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SubCategoryId");
+                OnSubCategoryIdChanged();
+            }
+        }
+        private global::System.Int64 _SubCategoryId;
+        partial void OnSubCategoryIdChanging(global::System.Int64 value);
+        partial void OnSubCategoryIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Color
+        {
+            get
+            {
+                return _Color;
+            }
+            set
+            {
+                OnColorChanging(value);
+                ReportPropertyChanging("Color");
+                _Color = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Color");
+                OnColorChanged();
+            }
+        }
+        private global::System.String _Color;
+        partial void OnColorChanging(global::System.String value);
+        partial void OnColorChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ThumbnailUrl
+        {
+            get
+            {
+                return _ThumbnailUrl;
+            }
+            set
+            {
+                OnThumbnailUrlChanging(value);
+                ReportPropertyChanging("ThumbnailUrl");
+                _ThumbnailUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ThumbnailUrl");
+                OnThumbnailUrlChanged();
+            }
+        }
+        private global::System.String _ThumbnailUrl;
+        partial void OnThumbnailUrlChanging(global::System.String value);
+        partial void OnThumbnailUrlChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImgUrl
+        {
+            get
+            {
+                return _ImgUrl;
+            }
+            set
+            {
+                OnImgUrlChanging(value);
+                ReportPropertyChanging("ImgUrl");
+                _ImgUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImgUrl");
+                OnImgUrlChanged();
+            }
+        }
+        private global::System.String _ImgUrl;
+        partial void OnImgUrlChanging(global::System.String value);
+        partial void OnImgUrlChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="ProductCategory")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ProductCategory : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 ProductCategory 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="name">Name 属性的初始值。</param>
+        /// <param name="cover">Cover 属性的初始值。</param>
+        public static ProductCategory CreateProductCategory(global::System.Int64 id, global::System.String name, global::System.String cover)
+        {
+            ProductCategory productCategory = new ProductCategory();
+            productCategory.Id = id;
+            productCategory.Name = name;
+            productCategory.Cover = cover;
+            return productCategory;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
         partial void OnIdChanged();
     
         /// <summary>
@@ -459,6 +1282,30 @@ namespace GenSqliteEdmx
         private global::System.String _Cover;
         partial void OnCoverChanging(global::System.String value);
         partial void OnCoverChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> Series
+        {
+            get
+            {
+                return _Series;
+            }
+            set
+            {
+                OnSeriesChanging(value);
+                ReportPropertyChanging("Series");
+                _Series = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Series");
+                OnSeriesChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _Series;
+        partial void OnSeriesChanging(Nullable<global::System.Int64> value);
+        partial void OnSeriesChanged();
 
         #endregion
 
@@ -673,6 +1520,185 @@ namespace GenSqliteEdmx
         private global::System.String _PWD;
         partial void OnPWDChanging(global::System.String value);
         partial void OnPWDChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// 没有元数据文档可用。
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Video")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Video : EntityObject
+    {
+        #region 工厂方法
+    
+        /// <summary>
+        /// 创建新的 Video 对象。
+        /// </summary>
+        /// <param name="id">Id 属性的初始值。</param>
+        /// <param name="title">Title 属性的初始值。</param>
+        public static Video CreateVideo(global::System.Int64 id, global::System.String title)
+        {
+            Video video = new Video();
+            video.Id = id;
+            video.Title = title;
+            return video;
+        }
+
+        #endregion
+
+        #region 基元属性
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HtmlCode
+        {
+            get
+            {
+                return _HtmlCode;
+            }
+            set
+            {
+                OnHtmlCodeChanging(value);
+                ReportPropertyChanging("HtmlCode");
+                _HtmlCode = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HtmlCode");
+                OnHtmlCodeChanged();
+            }
+        }
+        private global::System.String _HtmlCode;
+        partial void OnHtmlCodeChanging(global::System.String value);
+        partial void OnHtmlCodeChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImgUrl
+        {
+            get
+            {
+                return _ImgUrl;
+            }
+            set
+            {
+                OnImgUrlChanging(value);
+                ReportPropertyChanging("ImgUrl");
+                _ImgUrl = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImgUrl");
+                OnImgUrlChanged();
+            }
+        }
+        private global::System.String _ImgUrl;
+        partial void OnImgUrlChanging(global::System.String value);
+        partial void OnImgUrlChanged();
+    
+        /// <summary>
+        /// 没有元数据文档可用。
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SourcePath
+        {
+            get
+            {
+                return _SourcePath;
+            }
+            set
+            {
+                OnSourcePathChanging(value);
+                ReportPropertyChanging("SourcePath");
+                _SourcePath = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SourcePath");
+                OnSourcePathChanged();
+            }
+        }
+        private global::System.String _SourcePath;
+        partial void OnSourcePathChanging(global::System.String value);
+        partial void OnSourcePathChanged();
 
         #endregion
 

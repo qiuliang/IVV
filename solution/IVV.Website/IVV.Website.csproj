@@ -187,6 +187,7 @@
     </Compile>
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1453,6 +1454,9 @@
     <Content Include="Views\Admin\EditProduct.cshtml" />
     <Content Include="Views\Website\_ViewStart.cshtml" />
     <Content Include="Views\Website\ReadNews.cshtml" />
+    <Content Include="Views\Website\副本 ProductList.cshtml" />
+    <Content Include="Views\Website\_LayoutProduct.cshtml" />
+    <None Include="Views\Website\ProductItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

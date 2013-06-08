@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>产品详情</title>
+<link href="~/Styles/main.css" rel="stylesheet" />
+<link href="~/Styles/page.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+<script src="~/Scripts/lightbox/lightbox_plus_min.js"></script>
+<link href="~/Scripts/lightbox/lightbox.css" rel="stylesheet" />
+<script type="text/javascript">
+	$(function () {
+		$("#photoList img").hover(function () {
+			$(this).addClass("img_hover");
+		}, function () {
+			$(this).removeClass("img_hover");
+		});
+	});	
+</script>
+
+
+<style type="text/css">
+body {
+	background:#fff url(images/dropDown_bg.png) 260px 0 repeat-y;
+}
+
+#container {
+	width: 975px;
+}
+
+#dropList {
+	padding:80px 0 0 15px;
+	float:left; 
+	width:198px;
+}
+
+#dropList div {
+	float:right;
+	margin-bottom:1.5em;
+	width:170px;
+}
+
+#dropList select {
+	width:170px;
+	padding:4px 1px 4px 2px;
+	background:#fff;
+	border:none;
+}
+
+#main {
+	margin-left:437px;
+}
+
+#photoList div {
+	float:left;
+	text-align:center;
+	margin:0 15px 50px 0;
+}
+
+#photoList div img {
+	width:155px;
+	height:155px;	
+}
+
+#photoList p {
+	margin-top:3px;
+}
+
+#photo_small {
+	float:none;
+	text-align:left;
+	width:510px;
+	margin-top:220px;
+}
+
+div#photo_small img {
+	width:80px;
+	height:80px;
+	margin-right:20px;	
+}
+</style>
+
+</head>
+
+<body>
+<div id="container">
+	<div id="menu">
+		<a href="Index.html"><img src="Images/logo.png" alt="" /></a>
+	
+		@Html.Action("Menu", "Website", new { name = "产品" })
+
+		<p class="dot_bg">&nbsp;</p>
+		<p style="font-size:12px;">
+		<strong>IVV Home Decor & Table</strong><br />
+		Tel +39 055 944444<br />
+		Fax +39 055 944447<br />
+		E-mail info@ivvnet.it
+		</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<div class="bshare-custom icon-medium">
+			<a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a></div>
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+		<p>&nbsp;</p>
+		<p class="dot_bg">&nbsp;</p>
+		CREDITS
+	</div>
+
+	<div id="dropList">
+
+		<div style="text-align:right;">
+			<img src="~/Images/button-home-big-on.png" />
+			<img src="~/Images/button-table-off.png" style="width:100px;" />
+		</div>
+
+		<div style="clear:right;">
+		大类：<br />
+		<select>
+			<option>Tuttle</option>
+			<option>Tuttle</option>
+			<option>Tuttle</option>
+		</select>
+		</div>
+
+		<div style="clear:right;">
+		小类：<br />
+		<select>
+			<option>Tuttle</option>
+			<option>Tuttle</option>
+			<option>Tuttle</option>
+		</select>
+		</div>	
+
+		<div style="clear:right;">
+		颜色：<br />
+		<select>
+			<option>Tuttle</option>
+			<option>Tuttle</option>
+			<option>Tuttle</option>
+		</select>
+		</div>
+	</div>
+
+	<div id="main">
+	<div id="photoList">
+		@if(Request["type"] != "in"){
+		<div>
+			<a href="ProductList.aspx?type=in"><img src="~/Images/photo/a1.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+
+		<div>
+			<a href="ProductList.aspx?type=in"><img src="~/Images/photo/a2.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+
+		<div>
+			<a href="ProductList.aspx?type=in"><img src="~/Images/photo/a3.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+
+		<div>
+			<a href="ProductList.aspx?type=in"><img src="~/Images/photo/a4.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+
+		<div>
+			<a href="ProductList.aspx?type=in"><img src="~/Images/photo/a5.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+
+		<div>
+			<a href="ProductList.aspx?type=in"><img src="~/Images/photo/a6.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+	 }else{		
+		<div>
+			<a href="~/Images/photo/c1b.jpg" rel="lightbox-cat"><img src="~/Images/photo/c1.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+		<div>
+			<a href="~/Images/photo/c2b.jpg" rel="lightbox-cat"><img src="~/Images/photo/c2.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+  
+		<div>
+			<a href="~/Images/photo/c3b.jpg" rel="lightbox-cat"><img src="~/Images/photo/c3.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+		<div>
+			<a href="~/Images/photo/c4b.jpg" rel="lightbox-cat"><img src="~/Images/photo/c4.jpg" class="img_normal" /></a>
+			<p>helios vasi</p>
+		</div>
+	    <div style="float:none;">&nbsp;</div>
+	}
+	</div><!-- PhotoList -->
+
+	@if (Request["type"] == "in") {
+	<div id="photo_small">
+		<a href="~/Images/photo/b1b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b1.jpg" /></a>
+		<a href="~/Images/photo/b2b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b2.jpg" /></a>
+		<a href="~/Images/photo/b3b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b3.jpg" /></a>
+	</div>
+	}
+
+	</div><!-- main -->
+
+</div><!-- Container -->
+
+
+</body>
+</html>

@@ -8,5 +8,6 @@ namespace IVV.Website.DataModel {
 	[MetadataType(typeof(ProductValidation))]
 	public partial class Product {
 		public IEnumerable<ProductCategory> CategoryList { get; set; }
+
 	}
 }

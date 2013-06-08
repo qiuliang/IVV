@@ -64,5 +64,11 @@ $(function () {
 		 </div>
     </div>
     @RenderSection("Scripts", false)
+    
+    <script type="text/javascript">
+        @if (TempData["errorMsg"] != null) { 
+            @:alert("@TempData["errorMsg"]");
+        }
+    </script>
 </body>
 </html>

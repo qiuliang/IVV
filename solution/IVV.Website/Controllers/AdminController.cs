@@ -348,12 +348,17 @@ namespace IVV.Website.Controllers {
 				old.ParentId = model.ParentId;
 				context.SaveChanges();
 			}
-			return View();
+			return RedirectToAction("ProductCategory");
 		}
 
 		public ActionResult DelProductCategory(int id) {
 			var m = context.ProductCategory.SingleOrDefault(t => t.Id == id);
 			if (m != null) {
+				var isRef = context.Product.Where(t => t.CategoryId == m.Id).Count() > 0;
+				if (isRef) {
+					TempData["errorMsg"] = "该类别被产品引用，不能删除";
+					return RedirectToAction("ProductCategory");
+				}
 				context.ProductCategory.Remove(m);
 				context.SaveChanges();
 			}

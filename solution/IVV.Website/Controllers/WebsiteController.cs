@@ -30,8 +30,63 @@ namespace IVV.Website.Controllers {
 			return View("_Menu");
 		}
 
-		public ActionResult ProductList() {
-			return View("ProductList");
+		public ActionResult ProductList(string s,string type,int? c,string sc,string color) {
+			var cateList = context.ProductCategory.Where(t => t.ParentId == null);
+			if (!string.IsNullOrEmpty(s)) {
+				var si = IVV.Website.ClassLib.EnumHelper.GetEnumKey<IVV.Website.ClassLib.ProductSeries>(s);
+				cateList = cateList.Where(t => t.Series == si);
+			}
+			var m = new IVV.Website.Models.ProductModel();
+
+			m.CategoryList = cateList;
+			var subCates = new List<string>();
+			context.Product.Select(t => new { Sn = t.SubCategory, Cid = t.CategoryId })
+							.Distinct().ForEach(a => {
+								subCates.Add(string.Format("{0}*$*{1}",a.Cid,a.Sn));
+							});
+			m.SubCategoryList = subCates;
+			m.ColorList = context.Product.Select(t => t.Color).Distinct().ToList();
+
+			if (type == "in") {
+				var plist = context.Product.AsQueryable();
+				if (c.HasValue) {
+					plist = plist.Where(t => t.CategoryId == c.Value);
+				}
+				if (!string.IsNullOrEmpty(sc)) {
+					plist = plist.Where(t => t.SubCategory == sc);
+				}
+				if (!string.IsNullOrEmpty(color)) {
+					plist = plist.Where(t => t.Color == color);
+				}
+				m.ProductList = plist;
+				m.ColorList = plist.Select(t => t.Color).Distinct().ToList();
+			}
+			return View(m);
+		}
+
+		public ActionResult ProductItem(string s,string type,int? c,int id) {
+			var cateList = context.ProductCategory.Where(t => t.ParentId == null);
+			if (!string.IsNullOrEmpty(s)) {
+				var si = IVV.Website.ClassLib.EnumHelper.GetEnumKey<IVV.Website.ClassLib.ProductSeries>(s);
+				cateList = cateList.Where(t => t.Series == si);
+			}
+			var m = new IVV.Website.Models.ProductModel();
+
+			m.CategoryList = cateList;
+			var subCates = new List<string>();
+			context.Product.Select(t => new { Sn = t.SubCategory, Cid = t.CategoryId })
+							.Distinct().ForEach(a => {
+								subCates.Add(string.Format("{0}*$*{1}",a.Cid,a.Sn));
+							});
+			m.SubCategoryList = subCates;
+			m.ColorList = context.Product.Select(t => t.Color).Distinct().ToList();
+
+			if (type == "in" && c.HasValue) {
+				m.ProductList = context.Product.Where(t => t.CategoryId == c.Value);
+			}
+			m.Item = context.Product.SingleOrDefault(t => t.Id == id);
+			
+			return View(m);
 		}
 
 		public ActionResult Maintenance() {

@@ -82,3 +82,83 @@ p.dot_arrow span {
 	padding:0 0 30px;
 	font-size:20px;
 }
+
+/* add */
+.imgContainer p.item
+{
+    float:left;
+    margin-left:20px;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+.imgContainer p.item:hover {
+    
+}
+.imgContainer img.thumb
+{
+    width:120px;
+    height:96px;
+}
+
+.clear
+{
+    clear:both;
+}
+.hide
+{
+    display:none;
+}
+.table thead th,.table tbody td
+{
+    text-align:left;
+    padding:3px;
+}
+.table thead th
+{
+    border-bottom:solid 1px #ccc;
+}
+/******页码********/
+.t-grid-pager {
+    font-size: 13px;
+    margin-top: 10px;
+}
+.right_content .text .page, .t-grid-pager {
+    color: #0a4986;
+    float: right;
+}
+
+.t-arrow-first, .t-arrow-prev {
+    float: left;
+}
+.right_content .text .page a span, .t-icon {
+    color: #0a4986;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 14px;
+}
+.t-arrow-prev {
+    margin-left: 7px;
+}
+
+.right_content .text .page .current, .t-numeric .t-state-active {
+    background: none repeat scroll 0 0 #0a4986;
+    color: #FFFFFF;
+    float: left;
+    font-weight: bold;
+    padding: 1px 5px;
+    margin: 0 3px;
+}
+.t-status-text {
+    margin-left: 7px;
+}
+.right_content .text .page .ys, .t-numeric {
+    float: left;
+    margin: 0 10px;
+}
+.t-numeric .t-link {
+    color: #0A4986;
+    float: left;
+    margin: 0 3px;
+    padding: 1px 5px;
+}

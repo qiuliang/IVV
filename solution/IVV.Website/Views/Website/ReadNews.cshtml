@@ -1,0 +1,26 @@
+﻿@model IVV.Website.DataModel.Post
+@{
+    ViewBag.Title = "查看新闻";
+}
+
+@section head{
+<style type="text/css">
+body {
+	background-image: url(images/dettaglio-love.jpg);
+}
+</style>
+}
+
+@section menu{
+	@Html.Action("Menu", "Website", new { name = "新闻" })
+}
+
+<h1>@Model.Title</h1>
+
+<p style="height:1px;background:#aaa;margin-bottom:20px;">
+    @Html.Raw(Model.Content)
+</p>
+
+<br />
+
+

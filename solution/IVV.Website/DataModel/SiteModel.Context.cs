@@ -25,12 +25,13 @@ namespace IVV.Website.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<SiteInfo> SiteInfo { get; set; }
         public DbSet<SysUser> SysUser { get; set; }
         public DbSet<Post> Post { get; set; }
         public DbSet<FileInfo> FileInfo { get; set; }
         public DbSet<Video> Video { get; set; }
         public DbSet<NoteBook> NoteBook { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductCategory> ProductCategory { get; set; }
     }
 }

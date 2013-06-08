@@ -12,12 +12,14 @@ namespace IVV.Website.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductCategory
+    public partial class Product
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Cover { get; set; }
-        public Nullable<int> Series { get; set; }
-        public Nullable<int> ParentId { get; set; }
+        public long CategoryId { get; set; }
+        public string SubCategory { get; set; }
+        public string Color { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

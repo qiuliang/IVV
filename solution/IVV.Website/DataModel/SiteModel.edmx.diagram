@@ -5,10 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="91ff8a576e3143f98a65a0e870d9d352" Name="关系图1">
-        <EntityTypeShape EntityType="DataModel.ProductCategory" Width="1.5" PointX="1.5" PointY="1.5" />
-        <EntityTypeShape EntityType="DataModel.SysUser" Width="1.5" PointX="3.75" PointY="1.5" />
-        <EntityTypeShape EntityType="DataModel.SiteInfo" Width="1.5" PointX="1.5" PointY="3.25" />
+        <EntityTypeShape EntityType="DataModel.SiteInfo" Width="1.5" PointX="2.75" PointY="0.75" Height="1.3969734700520835" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.SysUser" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5879931640624996" IsExpanded="true" />
         <EntityTypeShape EntityType="DataModel.Post" Width="1.5" PointX="3.375" PointY="3.75" Height="2.1610522460937496" />
+        <EntityTypeShape EntityType="DataModel.FileInfo" Width="1.5" PointX="5.375" PointY="0.75" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="DataModel.Video" Width="1.5" PointX="5.375" PointY="4.75" Height="2.1610522460937496" />
+        <EntityTypeShape EntityType="DataModel.NoteBook" Width="1.5" PointX="0.75" PointY="6.75" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="DataModel.Product" Width="1.5" PointX="7.375" PointY="0.75" Height="2.3520719401041674" />
+        <EntityTypeShape EntityType="DataModel.ProductCategory" Width="1.5" PointX="3.375" PointY="7.75" Height="1.7790128580729174" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

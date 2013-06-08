@@ -1,0 +1,90 @@
+﻿@model IVV.Website.DataModel.ProductCategory
+
+@{
+    ViewBag.Title = "EditProductCategory";
+}
+
+<h2>EditProductCategory</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ProductCategory</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            封面图
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cover)
+            <a id="abtnUpload" class="btn">上传图片</a>
+            <div id="divImg"></div>
+            @Html.ValidationMessageFor(model => model.Cover)
+        </div>
+
+        <div class="editor-label">
+            系列
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.Series,IVV.Website.ClassLib.EnumHelper.EnumToSelectList<IVV.Website.ClassLib.ProductSeries>(Model.ParentNode!=null?Model.ParentNode.Series : null,false))
+            @Html.ValidationMessageFor(model => model.Series)
+        </div>
+
+        
+        @if (Model.ParentNode != null) {
+            <div class="editor-label">
+            父类别
+        </div>
+            @Model.ParentNode.Name
+        }
+@*
+        else {
+        <div class="editor-field hide">
+            @Html.EditorFor(model => model.ParentId)
+            @Html.ValidationMessageFor(model => model.ParentId)
+        </div>
+        }*@
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div id="dialog" title="上传文件" style="display:none;">
+	
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/uploader.js"></script>
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var upload = new uploader({
+            triggerId : "abtnUpload",
+            dialogId: "dialog",
+            container: "divImg",
+            textId: "Cover"
+        });
+        upload.init();
+    });
+
+</script>

@@ -1,6 +1,6 @@
-﻿@{
+﻿@model IVV.Website.DataModel.SiteInfo
+@{
     ViewBag.Title = "Company";
-    Layout = "~/Views/Website/_LayoutList.cshtml";
 }
 
 @section menu{
@@ -8,31 +8,4 @@
 }
 
 <h1>公司介绍</h1>
-<p style="color:#888">An ethical commitment</p>
-
-<p>IVV Industria Vetraria Valdarnese, was established back in 1952 by a group of master glassmakers.
-Through the years, IVV has made a name for itself as one of Europe's leading manufactures of handmade blow glass, combining innovative research, design, traditional artisan techniques and strict process controls to create glass objects which provide a new sense of style to the home and table.</p>
-<br />
- 
-<p style="color:#888">The passion of glass</p>
-<p>Each IVV object is made by hand.<br />
-It's the master glassmaker that by molding the object gives its character. The manual treatment infuses the form with lightness and energy that only artisan passion can achieve. The difference catches the eye, small details create a peculiarity, a distinctive mark telling its unique personality.</p>
-<br />
-
-<p style="color:#888">Crystalline glass</p>
-<p>Exceptionality highlights every object manufactured by IVV, the result of a careful selection of a raw materials producting the best glass ever for its transparent and brillant character.
-Superior sonorous glass: see it, touch it, hear it.</p>
-<br />
- 
-<p style="color:#888">IVV, style in glass</p>
-<p>IVV is a company whose Tuscan roots have provided its vital lymph.<br />
-Through its 50 years of activity, artisan craftsmanship and rigorous yet extrovert design have come together to create a style that has left its inimitable mark on every object.<br />
-The artisan's personal teaching has been transformed into an industrial process but never losing its passion for beauty. A production uninterrupted over the years, charged with its own story and ideally linking past and future. A temporal bridge that makes possible to always conceive new projects, embracing cultures around the world while preserving its identity. Collections always marked by its immediately recognizable style.</p>
-			
-<br /><br />
-<p class="dot_bg">&nbsp;</p>
-			
-<p><img src="Images/IQNET.png" alt="" /><img src="Images/Emas.png" alt="" /></p>
-
-<p>Environmental policy (pdf)</p>
-<p>The environmental policy IVV is available at : info@ivvnet.it</p>
+@Html.Raw(Model.Company)

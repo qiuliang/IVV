@@ -7,12 +7,13 @@
       <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DataModelStoreContainer">
           <EntitySet Name="FileInfo" EntityType="DataModel.Store.FileInfo" store:Type="Tables" />
+          <EntitySet Name="NoteBook" EntityType="DataModel.Store.NoteBook" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="DataModel.Store.Post" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="DataModel.Store.Product" store:Type="Tables" />
           <EntitySet Name="ProductCategory" EntityType="DataModel.Store.ProductCategory" store:Type="Tables" />
           <EntitySet Name="SiteInfo" EntityType="DataModel.Store.SiteInfo" store:Type="Tables" />
           <EntitySet Name="SysUser" EntityType="DataModel.Store.SysUser" store:Type="Tables" />
           <EntitySet Name="Video" EntityType="DataModel.Store.Video" store:Type="Tables" />
-          <EntitySet Name="NoteBook" EntityType="DataModel.Store.NoteBook" store:Type="Tables" />
         </EntityContainer>
         <EntityType Name="FileInfo">
           <Key>
@@ -53,13 +54,27 @@
           <Property Name="UpdateDate" Type="datetime" />
           <Property Name="Poster" Type="nvarchar" Nullable="false" MaxLength="20" />
         </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CategoryId" Type="integer" Nullable="false" />
+          <Property Name="SubCategory" Type="nvarchar" MaxLength="100"  />
+          <Property Name="Color" Type="nvarchar" MaxLength="20" />
+          <Property Name="ThumbnailUrl" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" />
-          <Property Name="Cover" Type="nvarchar" Nullable="false" />
+          <Property Name="Cover" Type="nvarchar" Nullable="true" />
+          <Property Name="Series" Type="integer" />
+          <Property Name="ParentId" Type="integer" Nullable="true" />
         </EntityType>
         <EntityType Name="SiteInfo">
           <Key>
@@ -94,22 +109,15 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SiteEntity" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ProductCategory" EntityType="DataModel.ProductCategory" />
           <EntitySet Name="SiteInfo" EntityType="DataModel.SiteInfo" />
           <EntitySet Name="SysUser" EntityType="DataModel.SysUser" />
           <EntitySet Name="Post" EntityType="DataModel.Post" />
           <EntitySet Name="FileInfo" EntityType="DataModel.FileInfo" />
           <EntitySet Name="Video" EntityType="DataModel.Video" />
           <EntitySet Name="NoteBook" EntityType="DataModel.NoteBook" />
+          <EntitySet Name="Product" EntityType="DataModel.Product" />
+          <EntitySet Name="ProductCategory" EntityType="DataModel.ProductCategory" />
         </EntityContainer>
-        <EntityType Name="ProductCategory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" Unicode="true" FixedLength="false" />
-          <Property Name="Cover" Type="String" Nullable="false" MaxLength="2147483647" Unicode="true" FixedLength="false" />
-        </EntityType>
         <EntityType Name="SiteInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -176,21 +184,34 @@
           <Property Type="String" Name="Message" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreateDate" Nullable="false" />
         </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="SubCategory"  />
+          <Property Type="String" Name="Color" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ThumbnailUrl" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImgUrl" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Cover" Nullable="true" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Series" />
+          <Property Type="Int32" Name="ParentId" Nullable="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="SiteEntity">
-          <EntitySetMapping Name="ProductCategory">
-            <EntityTypeMapping TypeName="DataModel.ProductCategory">
-              <MappingFragment StoreEntitySet="ProductCategory">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Cover" ColumnName="Cover" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SiteInfo">
             <EntityTypeMapping TypeName="DataModel.SiteInfo">
               <MappingFragment StoreEntitySet="SiteInfo">
@@ -260,6 +281,30 @@
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="DataModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="ThumbnailUrl" ColumnName="ThumbnailUrl" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategory">
+            <EntityTypeMapping TypeName="DataModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

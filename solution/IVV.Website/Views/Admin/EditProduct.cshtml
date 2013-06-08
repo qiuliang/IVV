@@ -1,0 +1,93 @@
+﻿@model IVV.Website.DataModel.Product
+
+@{
+    ViewBag.Title = "EditProduct";
+}
+
+<h2>EditProduct</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Product</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoryId, ViewData["catlist"] as List<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.CategoryId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubCategory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SubCategory)
+            @Html.ValidationMessageFor(model => model.SubCategory)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Color)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Color)
+            @Html.ValidationMessageFor(model => model.Color)
+        </div>
+
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImgUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ImgUrl)
+            <a id="abtnUpload" class="btn">上传图片</a>
+            <div id="divImg"></div>
+            @Html.ValidationMessageFor(model => model.ImgUrl)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div id="dialog" title="上传文件" style="display:none;">
+	
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/uploader.js"></script>
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var upload = new uploader({
+            triggerId : "abtnUpload",
+            dialogId: "dialog",
+            container: "divImg",
+            textId: "ImgUrl"
+        });
+        upload.init();
+    });
+
+</script>

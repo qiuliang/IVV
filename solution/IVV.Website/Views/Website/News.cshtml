@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "新闻";
-    Layout = "~/Views/Website/_LayoutList.cshtml";
+    var list = ViewData["list"] as IVV.Website.ClassLib.PageList<IVV.Website.DataModel.Post>;
 }
 
 @section head{
@@ -17,7 +17,30 @@ body {
 
 <h1>新闻</h1>
 
-<p style="height:1px;background:#aaa;margin-bottom:20px;"></p>
-<img src="~/Images/suite-black.jpg" />
 
-<br />
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th style="width:400px;">标题</th>
+            <th>日期</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in list) {
+        <tr>
+            <td>@Html.ActionLink(item.Title, "ReadNews", new { id = item.Id})</td>
+            <td>@item.CreateDate.ToShortDateString()</td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
+@{
+var pars = new Dictionary<string, object>();
+        
+    Html.RenderPager("_PageBar", list.Count, 10, (int)ViewData["pageIndex"], "/news.aspx", pars);
+}
+
+<div class="clear"></div>

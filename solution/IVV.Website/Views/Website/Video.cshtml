@@ -1,10 +1,13 @@
 ﻿@{
     ViewBag.Title = "Video";
-    Layout = "~/Views/Website/_LayoutList.cshtml";
+    var list = ViewData["list"] as IVV.Website.ClassLib.PageList<IVV.Website.DataModel.Video>;
 }
 
 
 @section head{
+    <script src="/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+	<script src="/Scripts/jquery-ui-1.10.2/ui/jquery-ui.js"></script>
+	<link href="/Scripts/jquery-ui-1.10.2/themes/base/jquery.ui.all.css" rel="stylesheet" />
 <style type="text/css">
 body {
 	background-image: url(images/dettaglio-dream.jpg);
@@ -17,3 +20,32 @@ body {
 }
 
 <h1>视频</h1>
+
+<div class="imgContainer">
+    @foreach (var item in list) { 
+    <p class="item">
+        <span class="hide video">@Html.Raw(item.HtmlCode)</span>
+        <img class="thumb" src="@item.ImgUrl" /><br />
+        <span>@item.Title</span>
+    </p>
+    }
+</div>
+
+<div class="clear"></div>
+
+<div id="dialog"></div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("div.imgContainer p.item").click(function () {
+            $("#dialog").html("");
+            $("#dialog").append($(this).find("span.video").html());
+            $("#dialog").dialog({
+                autoOpen : true,
+                title: "播放视频",
+                width: 515,
+                height:460
+            });
+        });
+    });
+</script>

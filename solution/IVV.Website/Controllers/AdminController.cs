@@ -122,9 +122,7 @@ namespace IVV.Website.Controllers {
         }
 
 
-		public ActionResult ProductCategory() {
-			return View();
-		}
+		
 
 
 		public JsonResult ImageUpload() {
@@ -211,9 +209,158 @@ namespace IVV.Website.Controllers {
 			return View("Uploadify");
 		}
 
-		public ActionResult Product() {
+		#region 产品管理
+		public ActionResult Product(int? pageIndex,string arcTitle) {
+			pageIndex = pageIndex ?? 1;
+
+			var list = context.Product.AsQueryable();
+            
+			if (!string.IsNullOrEmpty(arcTitle)) {
+                list = list.Where(t => t.Name.Contains(arcTitle));
+            }
+
+            ViewData["list"] = new PageList<Product>( list.OrderByDescending(t => t.Id)
+													, pageIndex.Value,10);
+
+            
+            ViewData["pageIndex"] = pageIndex;
+			ViewData["arcTitle"] = arcTitle;
+
+			var allCateList = new HashSet<ProductCategory>();
+			context.ProductCategory.Where(t => t.ParentId == null)
+				.ForEach(t => {
+					allCateList.Add(t);
+				});
+			ViewData["allCateList"] = allCateList;
+
+            return View();
+		}
+
+		public ActionResult EditProduct(int? id) { 
+			var m = new Product();
+			if (id.HasValue) {
+				var old = context.Product.SingleOrDefault(t => t.Id == id.Value);
+				m = old ?? m;
+			}
+			m.CategoryList = context.ProductCategory.Where(t => t.ParentId == null);
+
+			var selCateList = new List<SelectListItem>();
+			context.ProductCategory.Where(t => t.ParentId == null)
+									.ForEach(t => 
+										selCateList.Add(new SelectListItem(){
+											Text = t.Name,
+											Value = t.Id.ToString()											
+										})
+									);
+			ViewData["catlist"] = selCateList;	
+			return View(m);
+		}
+
+		[HttpPost]
+		public ActionResult EditProduct(Product model) {
+			
+			if (!ModelState.IsValid) {
+				return View();
+			}
+			if (model.Id == 0) {
+				try {
+					context.Product.Add(model);
+					context.SaveChanges();
+				}
+				catch (Exception ex) {
+					ModelState.AddModelError("DbError", ex.Message);
+				}
+			}
+			else {
+				var old = context.Product.SingleOrDefault(t => t.Id == model.Id);
+				old.Name = model.Name;
+				old.CategoryId = model.CategoryId;
+				old.SubCategory = model.SubCategory;
+				old.Color = model.Color;
+				old.ImgUrl = model.ImgUrl;
+				old.ThumbnailUrl = model.ThumbnailUrl;
+				context.SaveChanges();
+			}
+			return RedirectToAction("Product");
+		}
+
+		public ActionResult DelProduct(int id) {
+			var m = context.Product.SingleOrDefault(t => t.Id == id);
+			if (m != null) {
+				context.Product.Remove(m);
+				context.SaveChanges();
+			}
+			return RedirectToAction("Product");
+		}
+
+		public ActionResult ProductCategory(int? pageIndex,string arcTitle) {
+			pageIndex = pageIndex ?? 1;
+
+			var list = context.ProductCategory.AsQueryable();
+            
+			if (!string.IsNullOrEmpty(arcTitle)) {
+                list = list.Where(t => t.Name.Contains(arcTitle));
+            }
+
+            ViewData["list"] = new PageList<ProductCategory>( list.OrderByDescending(t => t.Id)
+													, pageIndex.Value,10);
+
+            
+            ViewData["pageIndex"] = pageIndex;
+			ViewData["arcTitle"] = arcTitle;
+
+            return View();
+		}
+
+		public ActionResult EditProductCategory(int? id,int? pid) { 
+			var m = new ProductCategory();
+			if (id.HasValue) {
+				var old = context.ProductCategory.SingleOrDefault(t => t.Id == id.Value);
+				m = old ?? m;
+			}
+			if (pid.HasValue) {
+				m.ParentId = pid.Value;
+				m.ParentNode = context.ProductCategory.SingleOrDefault(t => t.Id == pid.Value);
+			}
+			return View(m);
+		}
+
+		[HttpPost]
+		public ActionResult EditProductCategory(ProductCategory model) {
+			
+			if (!ModelState.IsValid) {
+				return View();
+			}
+			if (model.Id == 0) {
+				try {
+					context.ProductCategory.Add(model);
+					context.SaveChanges();
+				}
+				catch (Exception ex) {
+					ModelState.AddModelError("DbError", ex.Message);
+				}
+			}
+			else {
+				var old = context.ProductCategory.SingleOrDefault(t => t.Id == model.Id);
+				old.Name = model.Name;
+				old.Series = model.Series;
+				old.Cover = model.Cover;
+				old.ParentId = model.ParentId;
+				context.SaveChanges();
+			}
 			return View();
 		}
+
+		public ActionResult DelProductCategory(int id) {
+			var m = context.ProductCategory.SingleOrDefault(t => t.Id == id);
+			if (m != null) {
+				context.ProductCategory.Remove(m);
+				context.SaveChanges();
+			}
+			return RedirectToAction("ProductCategory");
+		}
+
+		#endregion
 
 		public ActionResult Video(int? pageIndex,string arcTitle) {
 			pageIndex = pageIndex ?? 1;

@@ -8,4 +8,10 @@ A website about household items.
 - ASP.NET MVC 4
 - sqlite
 
+## Remark
+
+- manage url : /admin/login.aspx
+- username : Admin
+- password : 12345678
+
 

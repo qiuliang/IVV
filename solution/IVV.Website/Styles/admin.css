@@ -297,6 +297,7 @@ p.validation-note {
 .pull-left
 {
     float: left;
+    display:inline-block;
 }
 /* 栅格 */
 .span1 {width:50px;}

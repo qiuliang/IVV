@@ -11,6 +11,7 @@
 <table id="tbList" class="table">
     <thead>
     <tr>
+        <th class="span1"><input type="checkbox" class="_selall" /></th>
         <th class="span1">
             编号
         </th>
@@ -43,6 +44,7 @@
 
 @foreach (var item in list) {
     <tr>
+        <td><input type="checkbox" name="selItems" value="@item.Id" /></td>
         <td>@item.Id</td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -77,6 +79,9 @@
 }
 </tbody>
 </table>
+<p class="p ">
+    <a class="ml1 btn button pull-left" id="abtnDelAll" data-t="n">删除</a>
+</p>
 
 <script type="text/javascript">
     $(document).ready(function () {

@@ -593,6 +593,58 @@ namespace IVV.Website.Controllers {
 		public ActionResult KendoUI() {
 			return View("KendoUI");
 		}
+
+		public ActionResult DelAll(string t,string ids) {
+			var arr = ids.Split(',');
+			if (t == "news") {
+				arr.ForEach(tt => {
+					var id1 = int.Parse(tt);
+					var m = context.Post.SingleOrDefault(a => a.Id == id1);
+					if (m != null) {
+						context.Post.Remove(m);
+					}
+				});
+			}
+			else if (t == "p") { 
+				arr.ForEach(tt => {
+					var id = int.Parse(tt);
+					var m = context.Product.SingleOrDefault(a => a.Id == id);
+					if (m != null) {
+						context.Product.Remove(m);
+					}
+				});
+			}
+			else if (t == "pc") { 
+				arr.ForEach(tt => {
+					var id = int.Parse(tt);
+					var m = context.ProductCategory.SingleOrDefault(a => a.Id == id);
+					if (m != null) {
+						var isRef = context.Product.Where(b => b.CategoryId == m.Id).Count() > 0;
+						if(!isRef)	context.ProductCategory.Remove(m);
+					}
+				});
+			}
+			else if (t == "v") { 
+				arr.ForEach(tt => {
+					var id = int.Parse(tt);
+					var m = context.Video.SingleOrDefault(a => a.Id == id);
+					if (m != null) {
+						context.Video.Remove(m);
+					}
+				});
+			}
+			else if (t == "n") { 
+				arr.ForEach(tt => {
+					var id = int.Parse(tt);
+					var m = context.NoteBook.SingleOrDefault(a => a.Id == id);
+					if (m != null) {
+						context.NoteBook.Remove(m);
+					}
+				});
+			}
+			context.SaveChanges();
+			return Json(new { Result = true},JsonRequestBehavior.AllowGet);
+		}
 		#endregion
 		
     }

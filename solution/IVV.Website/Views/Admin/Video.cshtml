@@ -11,6 +11,7 @@
 <table class="table">
     <thead>
     <tr>
+        <th class="span1"><input type="checkbox" class="_selall" /></th>
         <th class="span2">编号</th>
         <th class="span5">
             标题
@@ -32,6 +33,7 @@
 @foreach (var item in list) {
 
     <tr>
+        <td><input type="checkbox" name="selItems" value="@item.Id" /></td>
         <td>@item.Id</td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -65,5 +67,6 @@ var pars = new Dictionary<string, object>();
 }
 <div class="clear">&nbsp;</div>
 <p class="p ">
-    @Html.ActionLink("添加视频", "editvideo", null, new { @class="button"})
+    @Html.ActionLink("添加视频", "editvideo", null, new { @class="button pull-left"})
+    <a class="ml1 btn button pull-left" id="abtnDelAll" data-t="v">删除</a>
 </p>

@@ -52,4 +52,31 @@ $(document).ready(function () {
             return false;
         }
     });
+    //全选
+    $("table.table thead input[type='checkbox']").click(function () {
+        
+        var s = $(this).prop("checked"); 
+        $("table.table tbody input[type='checkbox']").prop("checked",s);
+    });
+    $("#abtnDelAll").click(function () {
+        var sl = $("table.table tbody input:checked");
+        if (sl.length == 0) {
+            alert("请至少选择一项");
+        }
+        else {
+            if (confirm("您确认要全部删除吗？")) {
+                var t = $(this).attr("data-t");
+                var ids = [];
+                sl.each(function () {
+                    ids.push($(this).val());
+                });
+                $.post("/admin/delall.aspx?t=" + t + "&ids=" + ids, function (d) {
+                    if (d.Result) {
+                        window.location.href = window.location.href;
+                    }
+                });
+            }
+        }
+    });
+
 });

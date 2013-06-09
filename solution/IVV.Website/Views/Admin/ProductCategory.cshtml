@@ -11,6 +11,7 @@
 <table class="table">
     <thead>
     <tr>
+        <th class="span1"><input type="checkbox" class="_selall" /></th>
         <th class="span2">
             编号
         </th>
@@ -30,6 +31,7 @@
     <tbody>
 @foreach (var item in list) {
     <tr>
+        <td><input type="checkbox" name="selItems" value="@item.Id" /></td>
         <td>@item.Id
 
         </td>
@@ -60,5 +62,6 @@
 </tbody>
 </table>
 <p class="p ">
-    @Html.ActionLink("添加类别", "EditProductCategory", null, new { @class="button"})
+    @Html.ActionLink("添加类别", "EditProductCategory", null, new { @class="button pull-left"})
+    <a class="ml1 btn button pull-left" id="abtnDelAll" data-t="pc">删除</a>
 </p>

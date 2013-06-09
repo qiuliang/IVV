@@ -45,3 +45,11 @@ function submitForm(formId, url) {
     var formData = $("#" + formId).serialize();
     submitData(formData, url);
 }
+
+$(document).ready(function () {
+    $("table.table tbody a[title='删除']").click(function () {
+        if (!confirm("确认要删除吗？")) {
+            return false;
+        }
+    });
+});

@@ -9,14 +9,13 @@
 <link href="~/Scripts/ckeditor/contents.css" rel="stylesheet" />
 }
 
-<h2>AddNews</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Post</legend>
+        <legend><span>添加/编辑新闻</span></legend>
         @Html.HiddenFor(m => m.Id)
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
@@ -35,15 +34,15 @@
         </div>
 
 
-        <p>
-            <input type="submit" value="保存" />
-        </p>
+        
     </fieldset>
+    <p class="p">
+            <button class="button btn span2 pull-left">保存</button>
+            <a href="/admin/news.aspx" class="button btn btn-info span2 pull-left ml2">返回列表</a>
+        </p>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>

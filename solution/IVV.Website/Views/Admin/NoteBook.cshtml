@@ -6,48 +6,48 @@
     ViewBag.Title = "NoteBook";
 }
 
-<h2>NoteBook</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table id="tbList">
+
+<table id="tbList" class="table">
+    <thead>
     <tr>
-        <th>
-            Name
+        <th class="span1">
+            编号
         </th>
-        <th>
-            Surname
+        <th class="span2">
+            姓名
         </th>
-        <th>
-            Company
+        
+        <th class="span3">
+            公司
         </th>
-        <th>
-            Country
+        <th class="span2">
+            国家
         </th>
-        <th>
-            Phone
+        <th class="span2">
+            电话
         </th>
-        <th>
+        <th class="span2">
             Email
         </th>
         <th>
-            Message
+            消息
         </th>
-        <th>
-            CreateDate
+        <th class="span2">
+            创建日期
         </th>
-        <th></th>
+        <th class="span2"></th>
     </tr>
+        </thead>
+    <tbody>
 
 @foreach (var item in list) {
     <tr>
+        <td>@item.Id</td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Company)
         </td>
@@ -61,19 +61,21 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            <a class="btn">展开</a>
+            <a class="btn" title="展开" style="text-decoration:underline;">展开...</a>
             <p style="display:none;">@item.Message</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
+            @item.CreateDate.ToShortDateString()
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditNoteBook", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DelNoteBook", new { id=item.Id })
+            @*@Html.ActionLink("Edit", "EditNoteBook", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DelNoteBook", new { id=item.Id })*@
+            <a title="查看" href="/admin/notebookdetail/@item.Id"><i class="icon icon-edit"></i></a>
+                <a title="删除" href="/admin/DelNoteBook/@item.Id" ><i class="icon icon-del"></i></a>
         </td>
     </tr>
 }
-
+</tbody>
 </table>
 
 <script type="text/javascript">

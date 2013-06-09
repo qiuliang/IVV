@@ -6,30 +6,33 @@
     var list = ViewData["list"] as IVV.Website.ClassLib.PageList<IVV.Website.DataModel.ProductCategory>;
 }
 
-<h2>ProductCategory</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+
+<table class="table">
+    <thead>
     <tr>
+        <th class="span2">
+            编号
+        </th>
         <th>
             名称
         </th>
-        <th>
+        <th class="span5">
             封面图
         </th>
-        <th>
+        <th class="span3">
             系列
         </th>
-        <th>
-            
-        </th>
-        <th></th>
+        
+        <th class="span2"></th>
     </tr>
-
+        </thead>
+    <tbody>
 @foreach (var item in list) {
     <tr>
+        <td>@item.Id
+
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -44,15 +47,18 @@
                 @sn
             }
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.ParentId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditProductCategory", new { id=item.Id }) |
+            @*@Html.ActionLink("Edit", "EditProductCategory", new { id=item.Id }) |
             @Html.ActionLink("Delete", "DelProductCategory", new { id=item.Id }) |
-            @Html.ActionLink("增加子类", "EditProductCategory", new { pid=item.Id  }) 
+            @Html.ActionLink("增加子类", "EditProductCategory", new { pid=item.Id  }) *@
+            <a title="编辑" href="/admin/EditProductCategory/@item.Id"><i class="icon icon-edit"></i></a>
+                <a title="删除" href="/admin/DelProductCategory/@item.Id" ><i class="icon icon-del"></i></a>
         </td>
     </tr>
 }
-
+</tbody>
 </table>
+<p class="p ">
+    @Html.ActionLink("添加类别", "EditProductCategory", null, new { @class="button"})
+</p>

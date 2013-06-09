@@ -66,8 +66,11 @@ $(function () {
     @RenderSection("Scripts", false)
     
     <script type="text/javascript">
-        @if (TempData["errorMsg"] != null) { 
-            @:alert("@TempData["errorMsg"]");
+        @if (TempData[IVV.Website.ClassLib.StaticDefination.TmpErrMsg] != null) { 
+            @:alert("@TempData[IVV.Website.ClassLib.StaticDefination.TmpErrMsg]");
+        }
+        @if (TempData[IVV.Website.ClassLib.StaticDefination.TmpSuccessMsg] != null) { 
+            @:alert("@TempData[IVV.Website.ClassLib.StaticDefination.TmpSuccessMsg]");
         }
     </script>
 </body>

@@ -55,7 +55,7 @@
 	<h2>@Model.Item.Name</h2>
 	<p>&nbsp;</p>
     <p><a href="@Model.Item.ImgUrl" alt="@Model.Item.Name" rel="lightbox-cat">
-        <img src="@Model.Item.ImgUrl" class="bordoOmbra" alt="@Model.Item.Name" >
+        <img style="width:452px;" src="@Model.Item.ImgUrl" class="bordoOmbra" alt="@Model.Item.Name" >
 
        </a>
 
@@ -66,11 +66,11 @@
 	<p>@Model.CategoryList.SingleOrDefault(t=>t.Id == Model.Item.CategoryId).Name  @Model.Item.SubCategory @Model.Item.Color</p>
 
     
-    <div id="photo_small">
+    @*<div id="photo_small">
 		<a href="~/Images/photo/b1b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b1.jpg" /></a>
 		<a href="~/Images/photo/b2b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b2.jpg" /></a>
 		<a href="~/Images/photo/b3b.jpg" rel="lightbox-cat"><img src="~/Images/photo/b3.jpg" /></a>
-	</div>
+	</div>*@
         
 	@*<p><i><a href="catalog-home-decor.asp?p1=LUCKY&amp;p2=&amp;p3=">Torna alla collezione</a></i></p>      *@
 </div>

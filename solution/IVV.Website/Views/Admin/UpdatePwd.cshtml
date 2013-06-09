@@ -1,7 +1,7 @@
-﻿@model IVV.Website.DataModel.ProductCategory
+﻿@model IVV.Website.Models.LoginModel
 
 @{
-    ViewBag.Title = "EditProductCategory";
+    ViewBag.Title = "修改密码";
 }
 
 
@@ -10,45 +10,37 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend><span>添加/编辑类别</span></legend>
+        <legend><span>修改密码</span></legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            旧密码
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            封面图 (155 * 155)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Cover)
-            <a title="上传图片" id="abtnUpload" class="merge btn"><i class="icon icon-upload"></i></a>
-            <div id="divImg">
-                @if (Model.Id != 0) { 
-                    <img src="@Model.Cover" style="width:150px;" />
-                }
-            </div>
-            @Html.ValidationMessageFor(model => model.Cover)
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
         </div>
 
         <div class="editor-label">
-            系列
+            新密码
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(m => m.Series,IVV.Website.ClassLib.EnumHelper.EnumToSelectList<IVV.Website.ClassLib.ProductSeries>(Model.ParentNode!=null?Model.ParentNode.Series : null,false))
-            @Html.ValidationMessageFor(model => model.Series)
+            @Html.PasswordFor(model => model.NewPassword)
+            @Html.ValidationMessageFor(model => model.NewPassword)
+        </div>
+
+        <div class="editor-label">
+            确认新密码
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword)
         </div>
 
         
-        @if (Model.ParentNode != null) {
-            <div class="editor-label">
-            父类别
-        </div>
-            @Model.ParentNode.Name
-        }
+        
+
+        
+        
 @*
         else {
         <div class="editor-field hide">
@@ -60,7 +52,6 @@
     </fieldset>
     <p class="p">
             <button class="button btn span2 pull-left">保存</button>
-            <a href="/admin/productcategory.aspx" class="button btn btn-info span2 pull-left ml2">返回列表</a>
         </p>
 }
 

@@ -5,37 +5,54 @@
     var allCate = ViewData["allCateList"] as HashSet<IVV.Website.DataModel.ProductCategory>;
 }
 
+<div class="search">
+@using (Html.BeginForm())
+{
+    <table class="p">
+        <tr>
+            <td style="width:50px;">名称</td>
+            <td style="width:150px;">@Html.TextBox("arcTitle")</td>
+            
+            <td>
 
-<h2>Product</h2>
-
-@using(Html.BeginForm()) {
-    @Html.TextBox("arcTitle")
-    <input type="submit" value="查询" />
+                <button class="merge btn"><i class="icon icon-search"></i></button>
+            </td>
+        </tr>
+        
+    </table>
 }
+</div>
 
-<table>
+
+<table class="table">
+    <thead>
     <tr>
+        <th class="span2">
+            编号
+        </th>
         <th>
             名称
         </th>
-        <th>
+        <th class="span3">
             类别
         </th>
-        <th>
+        <th class="span3">
             子类
         </th>
-        <th>
+        <th class="span2">
             颜色
         </th>
         
-        <th>
+        <th class="span4">
             产品图
         </th>
-        <th></th>
+        <th class="span2"></th>
     </tr>
-
+        </thead>
+    <tbody>
 @foreach (var item in list) {
     <tr>
+        <td>@item.Id</td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -53,12 +70,14 @@
             <img src="@item.ImgUrl" style="width:100px;" />
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditProduct", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DelProduct", new { id=item.Id })
+            @*@Html.ActionLink("Edit", "EditProduct", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DelProduct", new { id=item.Id })*@
+            <a title="编辑" href="/admin/EditProduct/@item.Id"><i class="icon icon-edit"></i></a>
+                <a title="删除" href="/admin/DelProduct/@item.Id" ><i class="icon icon-del"></i></a>
         </td>
     </tr>
 }
-
+</tbody>
 </table>
 
 @{
@@ -67,6 +86,7 @@ var pars = new Dictionary<string, object>();
     Html.RenderPager("_PageBar", list.Count, 10, (int)ViewData["pageIndex"], "/admin/product", pars);
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<div class="clear">&nbsp;</div>
+<p class="p ">
+    @Html.ActionLink("添加产品", "EditProduct", null, new { @class="button"})
 </p>

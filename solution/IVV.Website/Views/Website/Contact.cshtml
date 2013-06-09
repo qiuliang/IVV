@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IVV.Website.DataModel.NoteBook
+@{
     ViewBag.Title = "联系我们";
     Layout = "~/Views/Website/_LayoutList.cshtml";
 }
@@ -24,7 +25,20 @@ table td {
 	font-size:14px;
 	width:280px;
 }
+    textarea.msg
+    {
+        width:280px;height:80px;
+    }
+    .must
+    {
+        color:#b94a48;
+    }
 </style>
+    <script src="/Scripts/jquery-ui-1.10.2/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 }
 
 @section menu{
@@ -50,51 +64,82 @@ Corso 25 Aprile, Loc. Moleto Sud, Santhi&agrave; (VC) </p>
 </div>
 
 <br /><br /><br />
-<form>
+@using(Html.BeginForm()) {
 	<table>
 		<tr>
-			<td style="width:120px;">Name: </td>
-			<td><input type="text" class="textBox" /></td>
+			<td style="width:120px;">姓名: </td>
+			<td>
+                @Html.EditorFor(model => model.Name)<span class="must"> *</span>
+                @Html.ValidationMessageFor(model => model.Name)
+			</td>
+		</tr>
+		
+		<tr>
+			<td>公司:</td>
+			<td>
+                @Html.EditorFor(model => model.Company)
+                @Html.ValidationMessageFor(model => model.Company)
+			</td>
 		</tr>
 		<tr>
-			<td>Surname:</td>
-			<td><input type="text" class="textBox" /></td>
+			<td>国家:</td>
+			<td>
+                @Html.EditorFor(model => model.Country)
+                @Html.ValidationMessageFor(model => model.Country)
+			</td>
 		</tr>
 		<tr>
-			<td>Company:</td>
-			<td><input type="text" class="textBox" /></td>
-		</tr>
-		<tr>
-			<td>Country:</td>
-			<td><input type="text" class="textBox" /></td>
-		</tr>
-		<tr>
-			<td>Phone:</td>
-			<td><input type="text" class="textBox" /></td>
+			<td>手机:</td>
+			<td>
+                @Html.EditorFor(model => model.Phone)<span class="must"> *</span>
+                @Html.ValidationMessageFor(model => model.Phone)
+			</td>
 		</tr>
 		<tr>
 			<td>E-mail:</td>
-			<td><input type="text" class="textBox" /></td>
-		</tr>
-		<tr>
-			<td valign="top">Message:</td>
 			<td>
-				<textarea class="textBox" rows="5"></textarea>
+                @Html.EditorFor(model => model.Email)<span class="must"> *</span>
+                @Html.ValidationMessageFor(model => model.Email)
 			</td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
-			<td>保证隐私 <input type="checkbox" /><br />
-				输入验证码：<br />
-				<img src="~/Images/checkcode.png" /> <input type="text" class="textBox" style="width:140px" /><br />
-				<img src="~/Images/form_send.png" />
+			<td valign="top">留言:</td>
+			<td>
+                @Html.TextAreaFor(model => model.Message, new { @class="msg"})<span class="must"> *</span>
+                @Html.ValidationMessageFor(model => model.Message)
 			</td>
 		</tr>
-
+		<tr>
+			<td>验证码:</td>
+			<td>
+				
+				@Html.EditorFor(model => model.ValCode)<span class="must"> *</span>
+                
+                <img id="imgCoder" src="~/Service/CheckImage.aspx" alt="" 
+					title="看不清楚？点击换一张"  />
+                <br />
+                @Html.ValidationMessageFor(model => model.ValCode)
+			</td>
+		</tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" style="background:url(/images/form_send.png);width:85px;height:30px;">&nbsp;&nbsp;&nbsp;</button>
+            </td>
+        </tr>
 	</table>
+}
 
+<script type="text/javascript">
+    $("#imgCoder").click(function () {
+        $(this).attr("src",
+            "@Url.Content("~/Service/CheckImage.aspx?rnd=")" + Math.random());
+    });
+    @if (TempData["SuccessMsg"] != null) { 
+        @:alert("@TempData["SuccessMsg"]");
+    }
+</script>
 
-</form>
 
 
 

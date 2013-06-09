@@ -118,7 +118,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClassLib\StaticDef.cs" />
     <Compile Include="ClassLib\EnumHelper.cs" />
     <Compile Include="ClassLib\EnumrableExtensions.cs" />
     <Compile Include="ClassLib\FileUtil.cs" />
@@ -128,6 +127,8 @@
     <Compile Include="ClassLib\PageBar.cs" />
     <Compile Include="ClassLib\PageList.cs" />
     <Compile Include="ClassLib\ProductSeries.cs" />
+    <Compile Include="ClassLib\StaticDefination.cs" />
+    <Compile Include="ClassLib\StringExtentions.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
@@ -1456,7 +1457,10 @@
     <Content Include="Views\Website\ReadNews.cshtml" />
     <Content Include="Views\Website\副本 ProductList.cshtml" />
     <Content Include="Views\Website\_LayoutProduct.cshtml" />
+    <Content Include="Views\Admin\UpdatePwd.cshtml" />
+    <Content Include="Views\Admin\NoteBookDetail.cshtml" />
     <None Include="Views\Website\ProductItem.cshtml" />
+    <Content Include="Views\Website\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

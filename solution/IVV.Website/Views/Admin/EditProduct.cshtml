@@ -4,14 +4,13 @@
     ViewBag.Title = "EditProduct";
 }
 
-<h2>EditProduct</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Product</legend>
+        <legend><span>添加/编辑产品</span></legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -48,24 +47,28 @@
         
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ImgUrl)
+            @Html.LabelFor(model => model.ImgUrl) (452 * 452)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ImgUrl)
-            <a id="abtnUpload" class="btn">上传图片</a>
-            <div id="divImg"></div>
+            <a title="上传图片" id="abtnUpload" class="merge btn"><i class="icon icon-upload"></i></a>
+            <div id="divImg">
+                @if (Model.Id != 0) { 
+                    <img src="@Model.ImgUrl" style="width:150px;" />
+                }
+            </div>
             @Html.ValidationMessageFor(model => model.ImgUrl)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        
     </fieldset>
+    <p class="p">
+            <button class="button btn span2 pull-left">保存</button>
+            <a href="/admin/product.aspx" class="button btn btn-info span2 pull-left ml2">返回列表</a>
+        </p>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 <div id="dialog" title="上传文件" style="display:none;">
 	
 </div>

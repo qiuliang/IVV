@@ -129,7 +129,7 @@ input.focus {
 	background:#f5f5f5;
 }
 
-a.button, a.button:hover {
+.button{
 	font-size:14px;
 	background:#f60;
 	color:#fff;
@@ -167,4 +167,203 @@ p.validation-note {
 /* add */
 .btn {
     cursor:pointer;
+}
+.btn-info
+{
+    background: #3a87ad;
+}
+
+/* table list */
+.table
+{
+    width: 100%;
+    border-spacing:0px;
+}
+.table thead th,.table tbody td
+{
+    text-align:left;
+    padding:3px;
+}
+.table thead th
+{
+    border-bottom:solid 1px #ccc;
+    border-top:solid 1px #ccc;
+    background:#efefef;
+}
+    .table tbody td
+    {
+        border-bottom: solid 1px #ccc;
+        line-height:20px;
+        padding:4px;
+    }
+
+.icon
+{
+    display: inline-block;
+    height: 20px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    width: 20px;
+}
+.icon-edit
+{
+    background: url(/images/admin/edit_s.png) no-repeat;
+    
+}
+.icon-del
+{
+    background: url(/images/admin/del_s.png) no-repeat;
+    
+}
+.icon-search
+{
+    background: url(/images/admin/search_s.png) no-repeat;
+    
+}
+.icon-upload
+{
+    background: url(/images/admin/folder-add_s.png) no-repeat;
+    
+}
+.icon-collaspace
+{
+    background: url(/images/admin/triangle-right.png) no-repeat;
+}
+
+/******页码********/
+
+ .t-grid-pager {
+     font-size: 13px;
+    margin-top: 10px;
+    color: #0a4986;
+    float: left;
+    width:100%;
+}
+
+.t-arrow-first, .t-arrow-prev {
+    float: left;
+}
+.page a span, .t-icon {
+    
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 14px;
+}
+.t-arrow-prev {
+    margin-left: 7px;
+}
+
+.page .current, .t-numeric .t-state-active {
+    background: none repeat scroll 0 0 #0a4986;
+    color: #FFFFFF;
+    float: left;
+    font-weight: bold;
+    padding: 1px 5px;
+    margin: 0 3px;
+}
+.t-status-text {
+    margin-left: 7px;
+}
+.t-numeric {
+    float: left;
+    margin: 0 10px;
+}
+.t-numeric .t-link {
+    color: #0A4986;
+    float: left;
+    margin: 0 3px;
+    padding: 1px 5px;
+}
+.t-state-disabled
+{
+    color: #ccc;
+}
+/* p */
+.p
+{
+    margin: 10px 0px;
+}
+    .p a.button
+    {
+        width: 100px;
+    }
+
+.merge
+{
+    background: #fff;
+    border: 0px;
+}
+.pull-left
+{
+    float: left;
+}
+/* 栅格 */
+.span1 {width:50px;}
+.span2 {width:100px;}
+.span3 {width:150px;}
+.span4 {width:200px;}
+.span5 {width:250px;}
+.span6 {width:300px;}
+.span7 {width:350px;}
+.span8 {width:400px;}
+.span9 {width:450px;}
+.span10 {width:500px;}
+
+.ml1 {margin-left:10px;}
+.ml2 {margin-left:20px;}
+
+.height1{height:50px;}
+.height2{height:100px;}
+.height3{height:150px;}
+.height4{height:200px;}
+/* form */
+fieldset
+{
+    padding: 10px;
+}
+    fieldset legend span
+    {
+        
+        background: #3a87ad;
+        color:#fff;
+        font-weight:bold;
+        font-size:12px;
+        line-height:14px;
+        display:inline-block;
+        padding:2px 4px;
+        vertical-align:baseline;
+    }
+.editor-label
+{
+    font-size: 12px;
+    margin: 5px;
+}
+.text-box
+{
+    width: 400px;
+}
+button.button
+{
+    border: 0px;
+}
+.display-label
+{
+    font-weight: bold;
+}
+.display-field
+{
+    margin-bottom: 10px;
+}
+/*验证*/
+.input-validation-error
+{
+    background-color: rgb(255, 238, 238);
+    
+}
+.field-validation-error
+{
+    color : #b94a48;
+    background:url(/images/admin/icon_error.png) left center no-repeat;
+    padding-left:20px;
 }

@@ -30,7 +30,7 @@ body {
     <tbody>
         @foreach (var item in list) {
         <tr>
-            <td>@Html.ActionLink(item.Title, "ReadNews", new { id = item.Id})</td>
+            <td title="@item.Title">@Html.ActionLink(IVV.Website.ClassLib.StringExtentions.SubString(item.Title,22), "ReadNews", new { id = item.Id})</td>
             <td>@item.CreateDate.ToShortDateString()</td>
         </tr>
         }

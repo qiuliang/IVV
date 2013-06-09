@@ -6,14 +6,13 @@
     ViewBag.Title = "Video";
 }
 
-<h2>Video</h2>
 
-<p>
-    @Html.ActionLink("新建", "EditVideo")
-</p>
-<table>
+
+<table class="table">
+    <thead>
     <tr>
-        <th>
+        <th class="span2">编号</th>
+        <th class="span5">
             标题
         </th>
         <th>
@@ -22,15 +21,18 @@
         @*<th>
             @Html.DisplayNameFor(model => model.HtmlCode)
         </th>*@
-        <th>
+        <th class="span4">
             预览图
         </th>
         
-        <th></th>
+        <th class="span2"></th>
     </tr>
-
+        </thead>
+        <tbody>
 @foreach (var item in list) {
+
     <tr>
+        <td>@item.Id</td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -45,13 +47,15 @@
         </td>
         
         <td>
-            @Html.ActionLink("Edit", "EditVideo", new { id=item.Id }) |
+            @*@Html.ActionLink("Edit", "EditVideo", new { id=item.Id }) |
             
-            @Html.ActionLink("Delete", "DelVideo", new { id=item.Id })
+            @Html.ActionLink("Delete", "DelVideo", new { id=item.Id })*@
+            <a title="编辑" href="/admin/EditVideo/@item.Id"><i class="icon icon-edit"></i></a>
+                <a title="删除" href="/admin/DelVideo/@item.Id" ><i class="icon icon-del"></i></a>
         </td>
     </tr>
 }
-
+        </tbody>
 </table>
 
 @{
@@ -59,3 +63,7 @@ var pars = new Dictionary<string, object>();
         
     Html.RenderPager("_PageBar", list.Count, 10, (int)ViewData["pageIndex"], "/admin/video", pars);
 }
+<div class="clear">&nbsp;</div>
+<p class="p ">
+    @Html.ActionLink("添加视频", "editvideo", null, new { @class="button"})
+</p>

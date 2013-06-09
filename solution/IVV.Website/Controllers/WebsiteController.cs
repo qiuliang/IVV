@@ -11,16 +11,58 @@ namespace IVV.Website.Controllers {
 	[AllowAnonymous]
 	public class WebsiteController : Controller {
 
+		
+
 		IVV.Website.DataModel.SiteEntity context;
 
 		public WebsiteController() {
 			context = new DataModel.SiteEntity();
 		}
 
+		protected override void OnActionExecuted(ActionExecutedContext filterContext) {
+			var ck = "Http500ErrMsg";
+			if (filterContext.Exception != null) {
+				var internalError = 
+					string.Format("<div>{0}</div><div>{1}</div>",filterContext.Exception.Message,filterContext.Exception.StackTrace);
+				if (HttpRuntime.Cache[ck] != null) {
+					HttpRuntime.Cache.Remove(ck);
+				}
+				HttpRuntime.Cache.Insert(ck, internalError);
+				filterContext.HttpContext.Response.Redirect("/error.aspx");
+			}
+
+		}
+		protected override void OnResultExecuted(ResultExecutedContext filterContext) {
+			var ck = "Http500ErrMsg";
+			if (filterContext.Exception != null) {
+				var internalError = 
+					string.Format("<div>{0}</div><div>{1}</div>",filterContext.Exception.Message,filterContext.Exception.StackTrace);
+				
+				if (HttpRuntime.Cache[ck] != null) {
+					HttpRuntime.Cache.Remove(ck);
+				}
+
+				HttpRuntime.Cache.Insert(ck, internalError);
+				
+				filterContext.HttpContext.Response.Redirect("/error.aspx");
+
+				
+			}
+
+		}
+
+
 		public ActionResult Index() {
 			return Redirect("~/index.html");
 		}
-
+		public ActionResult Error() {
+			var ck = "Http500ErrMsg";
+			if (HttpRuntime.Cache[ck] != null) {
+				ViewData[ck] = HttpRuntime.Cache[ck];
+					HttpRuntime.Cache.Remove(ck);
+				}
+			return View();
+		}
 		public ActionResult Product() {
 			return View("Product");
 		}
@@ -138,7 +180,34 @@ namespace IVV.Website.Controllers {
 		}
 
 		public ActionResult Contact() {
-			return View("Contact");
+			var m = new NoteBook();
+			return View(m);
+		}
+
+		[HttpPost]
+		public ActionResult Contact(NoteBook model) {
+			model.CreateDate = DateTime.Now;
+			object imgCode = Session["ImgCode"];
+
+			if (imgCode.ToString() != model.ValCode.ToUpper()) {
+				ModelState.AddModelError("ValCode", "验证码输入有误");
+			}
+
+			if (!ModelState.IsValid) { 
+				return View();
+			}
+			try {
+				context.NoteBook.Add(model);
+				context.SaveChanges();
+				TempData["SuccessMsg"] = "提交成功！我们将在第一时间和您联系！";
+			}
+			catch (Exception ex) {
+				ModelState.AddModelError("DbError", ex.Message);
+				return View();
+			}
+
+			return RedirectToAction("Contact");
+			
 		}
 
 		public ActionResult Stores() {

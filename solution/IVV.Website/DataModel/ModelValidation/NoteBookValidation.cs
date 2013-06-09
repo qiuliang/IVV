@@ -22,5 +22,8 @@ namespace IVV.Website.DataModel {
 		[Required(ErrorMessage="留言不能为空")]
 		[Display(Name="留言")]
 		public string Message { get; set; }
+
+		[Required(ErrorMessage="验证码不能为空")]
+		public string ValCode { get; set; }
 	}
 }

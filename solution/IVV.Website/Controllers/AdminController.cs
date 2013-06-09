@@ -7,6 +7,8 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using System.Xml;
 
 namespace IVV.Website.Controllers {
 
@@ -25,18 +27,25 @@ namespace IVV.Website.Controllers {
 		[AllowAnonymous]
 		public ActionResult Login(LoginModel model) {
 			JsonData reply;
-
+			ModelState.Remove("NewPassword");
+			ModelState.Remove("ConfirmPassword");
 			if (!ModelState.IsValid) {
 				reply = new JsonData(ModelState);
 				return Json(reply);
 			}
 
-			SysUser user = 
-				context.SysUser.FirstOrDefault(x => x.UserName == model.UserName);
+			//SysUser user = 
+			//	context.SysUser.FirstOrDefault(x => x.UserName == model.UserName);
 
-			if (user == null) {
+			//if (user == null) {
+			//	ModelState.AddModelError("UserName", "不存在此用户名");
+			//} else if (user.PWD != model.Password) {
+			//	ModelState.AddModelError("Password", "密码输入不正确");
+			//}
+			if (model.UserName != "Admin") { 
 				ModelState.AddModelError("UserName", "不存在此用户名");
-			} else if (user.PWD != model.Password) {
+			}
+			if (model.Password.ToMd5() != System.Configuration.ConfigurationManager.AppSettings["SuperPwd"]) { 
 				ModelState.AddModelError("Password", "密码输入不正确");
 			}
 
@@ -53,12 +62,24 @@ namespace IVV.Website.Controllers {
 
 			SetUserData(model.UserName, "");
 
-			reply = new JsonData(Url.Content("Index.aspx"));
+			reply = new JsonData(Url.Content("Company.aspx"));
 			return Json(reply);
 		}
 
+		public void SignOut() {
+			Session.Abandon();
+			Session.Clear();
+			// 获得Cookie
+			HttpCookie authCookie = new HttpCookie(".ASPXAUTH");
+			authCookie.Expires = DateTime.Now.AddDays(-1);
+
+			
+			Response.Cookies.Add(authCookie);
+			Response.Redirect("/admin/login.aspx");
+		}
 		#endregion
 
+		#region 网站设置
 		public ActionResult Company() {
 			base.SetSubNavId((int)SubNavGroup.SiteConfig);
 			SiteInfo item = context.SiteInfo.First();
@@ -117,30 +138,64 @@ namespace IVV.Website.Controllers {
 			return Json(reply);
 		}
 
-		public ActionResult Index() {
-            return View("Index");
-        }
+		public ActionResult UpdatePwd() {
+			return View();
+		}
 
+		[HttpPost]
+		public ActionResult UpdatePwd(LoginModel m) {
+			ModelState.Remove("CheckCode");
+			ModelState.Remove("UserName");
+			if (!ModelState.IsValid) {
+				return View();
+			}
 
+			if (m.Password.ToMd5() != System.Configuration.ConfigurationManager.AppSettings["SuperPwd"]) {
+				ModelState.AddModelError("Password", "旧密码不正确");
+                return View();
+            }
+
+			SetValue(Request.PhysicalApplicationPath, m.NewPassword.ToMd5());
+
+            TempData[StaticDefination.TmpErrMsg] = "密码修改成功";
+            return View();
+		}
+		private string Config(string path) {
+
+           return System.IO.Path.Combine(path, "web.config");//此处配置文件在程序目录下
+       }
+
+        private void SetValue(string path, string AppValue)
+       {
+           string configPath = Config(path);
+           XmlDocument xDoc = new XmlDocument();
+           xDoc.Load(configPath);
+           XmlNode xNode;
+           XmlElement xElem1;
+           XmlElement xElem2;
+           xNode = xDoc.SelectSingleNode("//appSettings");
+           xElem1 = (XmlElement)xNode.SelectSingleNode("//add[@key='SuperPwd']");
+           if (xElem1 != null)
+           {
+               string name = xElem1.GetAttribute("value");
+
+               xElem1.SetAttribute("value", AppValue);
+           }
+           else
+           {
+               xElem2 = xDoc.CreateElement("add");
+               xElem2.SetAttribute("key", "SuperAdminPassword");
+               xElem2.SetAttribute("value", AppValue);
+               xNode.AppendChild(xElem2);
+           }
+           xDoc.Save(configPath);
+       }
+
+		#endregion
+
+		#region 新闻管理
 		
-
-
-		public JsonResult ImageUpload() {
-            string path = "/content/uploads/";
-
-			var futil = new FileUtil();
-            futil.HttpPostedFile = Request.Files["FileData"];
-            futil.RootDirect = path;
-            
-            var fp = futil.SaveByDay();
-			return Json(new { path = fp }, JsonRequestBehavior.AllowGet);
-		}
-
-
-		public ActionResult KendoUI() {
-			return View("KendoUI");
-		}
-
+		
 		public ActionResult News(int? pageIndex,string arcTitle) {
 			pageIndex = pageIndex ?? 1;
 
@@ -184,6 +239,7 @@ namespace IVV.Website.Controllers {
 				}
 				catch (Exception ex) {
 					ModelState.AddModelError("DbError", ex.Message);
+					return View();
 				}
 			}
 			else {
@@ -193,7 +249,8 @@ namespace IVV.Website.Controllers {
 				old.UpdateDate = DateTime.Now;
 				context.SaveChanges();
 			}
-			return View();
+			TempData[StaticDefination.TmpSuccessMsg] = "操作成功！";
+			return RedirectToAction("News");
 		}
 
 		public ActionResult DelNews(int id) {
@@ -204,10 +261,7 @@ namespace IVV.Website.Controllers {
 			}
 			return RedirectToAction("News");
 		}
-
-		public ActionResult Upload() {
-			return View("Uploadify");
-		}
+		#endregion
 
 		#region 产品管理
 		public ActionResult Product(int? pageIndex,string arcTitle) {
@@ -338,6 +392,7 @@ namespace IVV.Website.Controllers {
 				}
 				catch (Exception ex) {
 					ModelState.AddModelError("DbError", ex.Message);
+					return View();
 				}
 			}
 			else {
@@ -347,7 +402,9 @@ namespace IVV.Website.Controllers {
 				old.Cover = model.Cover;
 				old.ParentId = model.ParentId;
 				context.SaveChanges();
+				
 			}
+			TempData[StaticDefination.TmpSuccessMsg] = "操作成功！";
 			return RedirectToAction("ProductCategory");
 		}
 
@@ -356,17 +413,21 @@ namespace IVV.Website.Controllers {
 			if (m != null) {
 				var isRef = context.Product.Where(t => t.CategoryId == m.Id).Count() > 0;
 				if (isRef) {
-					TempData["errorMsg"] = "该类别被产品引用，不能删除";
+					TempData[IVV.Website.ClassLib.StaticDefination.TmpErrMsg] = "该类别被产品引用，不能删除";
 					return RedirectToAction("ProductCategory");
 				}
 				context.ProductCategory.Remove(m);
 				context.SaveChanges();
 			}
+			TempData[StaticDefination.TmpSuccessMsg] = "操作成功！";
 			return RedirectToAction("ProductCategory");
 		}
 
 		#endregion
 
+		#region 视频管理
+		
+		
 		public ActionResult Video(int? pageIndex,string arcTitle) {
 			pageIndex = pageIndex ?? 1;
 
@@ -408,6 +469,7 @@ namespace IVV.Website.Controllers {
 				}
 				catch (Exception ex) {
 					ModelState.AddModelError("DbError", ex.Message);
+					return View();
 				}
 			}
 			else {
@@ -418,7 +480,8 @@ namespace IVV.Website.Controllers {
 				old.ImgUrl = model.ImgUrl;
 				context.SaveChanges();
 			}
-			return View();
+			TempData[StaticDefination.TmpSuccessMsg] = "操作成功！";
+			return RedirectToAction("Video");
 		}
 
 		public ActionResult DelVideo(int id) {
@@ -426,10 +489,15 @@ namespace IVV.Website.Controllers {
 			if (m != null) {
 				context.Video.Remove(m);
 				context.SaveChanges();
+				TempData[StaticDefination.TmpSuccessMsg] = "操作成功！";
 			}
 			return RedirectToAction("Video");
 		}
+		#endregion
 
+		#region 留言管理
+		
+		
 		public ActionResult NoteBook(int? pageIndex,string arcTitle) {
 			pageIndex = pageIndex ?? 1;
 
@@ -444,6 +512,11 @@ namespace IVV.Website.Controllers {
             ViewData["pageIndex"] = pageIndex;
 
             return View();
+		}
+
+		public ActionResult NotebookDetail(int id) {
+			var m = context.NoteBook.SingleOrDefault(t => t.Id == id);
+			return View(m);
 		}
 
 		public ActionResult EditNoteBook(int? id) { 
@@ -492,5 +565,35 @@ namespace IVV.Website.Controllers {
 			}
 			return RedirectToAction("NoteBook");
 		}
+		#endregion
+
+		#region 上传组件
+		
+		
+		public ActionResult Upload() {
+			return View("Uploadify");
+		}
+		public JsonResult ImageUpload() {
+            string path = "/content/uploads/";
+
+			var futil = new FileUtil();
+            futil.HttpPostedFile = Request.Files["FileData"];
+            futil.RootDirect = path;
+            
+            var fp = futil.SaveByDay();
+			return Json(new { path = fp }, JsonRequestBehavior.AllowGet);
+		}
+		#endregion
+
+		#region 其他
+		public ActionResult Index() {
+            return View("Index");
+        }
+
+		public ActionResult KendoUI() {
+			return View("KendoUI");
+		}
+		#endregion
+		
     }
 }

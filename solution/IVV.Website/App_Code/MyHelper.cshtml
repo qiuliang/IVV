@@ -3,9 +3,10 @@
     var a = Request.RequestContext.RouteData.Values["action"] as string;
     a = a.ToLower();
     @:<ul>
-    if(a == "company" || a == "copyright"){
+    if(a == "company" || a == "copyright" || a =="updatepwd"){
         <li class="first @if(a=="company"){<text>selected</text>}"><a href="/admin/company.aspx">公司介绍</a></li>
 	    <li class="@if(a=="copyright"){<text>selected</text>}"><a href="/admin/copyright.aspx">版权信息</a></li>
+    <li class="@if(a=="updatepwd"){<text>selected</text>}"><a href="/admin/updatepwd.aspx">修改密码</a></li>
     }
     else if(a == "news" || a =="addnews" ){
         <li class="first @if(a=="news"){<text>selected</text>}"><a href="/admin/news.aspx">新闻列表</a></li>
@@ -15,8 +16,8 @@
         <li class="first @if(a=="video"){<text>selected</text>}"><a href="/admin/video.aspx">视频列表</a></li>
         <li class="first @if(a=="editvideo"){<text>selected</text>}"><a href="/admin/editvideo.aspx">添加视频</a></li>
     }
-    else if(a == "notebook" || a =="editnotebook" ){
-        <li class="first @if(a=="notebook"){<text>selected</text>}"><a href="/admin/video.aspx">留言列表</a></li>
+    else if(a == "notebook" || a =="editnotebook" || a =="notebookdetail"){
+        <li class="first @if(a=="notebook" || a == "notebookdetail"){<text>selected</text>}"><a href="/admin/notebook.aspx">留言列表</a></li>
     }
     else if(a == "productcategory" || a =="product" || a =="editproductcategory" || a == "editproduct"){
         <li class="first @if(a=="productcategory"){<text>selected</text>}"><a href="/admin/productcategory.aspx">产品类别</a></li>
@@ -31,11 +32,11 @@
 @helper RenderNav(){
     var a = Request.RequestContext.RouteData.Values["action"] as string;
     a = a.ToLower();
-    var conf = new string[]{"company","copyright"};
+    var conf = new string[]{"company","copyright","updatepwd"};
     var news = new string[]{"news","addnews"};
     var prod = new string[]{"product","productcategory","editproductcategory","editproduct"};
     var av = new string[]{"video","editvideo"};
-    var msg = new string[]{"notebook","editnotebook"};
+    var msg = new string[]{"notebook","editnotebook","notebookdetail"};
     <text>
     <li class="@if(conf.Contains(a)){<text>selected</text>}"><a href="/admin/company.aspx">网站设置</a></li>
     <li class="@if(news.Contains(a)){<text>selected</text>}"><a href="/admin/news.aspx">新闻管理</a></li>

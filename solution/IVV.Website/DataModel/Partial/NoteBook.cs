@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IVV.Website.DataModel {
 	[MetadataType(typeof(NoteBookValidation))]
-	public partial class NoteBook {		
+	public partial class NoteBook {
+		public string ValCode { get; set; }
 	}
 }

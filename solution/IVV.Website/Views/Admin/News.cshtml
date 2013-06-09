@@ -16,25 +16,29 @@
 <div class="search">
 @using (Html.BeginForm())
 {
-    <table>
+    <table class="p">
         <tr>
             <td style="width:50px;">标题名称</td>
             <td style="width:150px;">@Html.TextBox("arcTitle")</td>
             
-            <td><input type="submit" value="查 询" /></td>
+            <td>
+
+                <button class="merge btn"><i class="icon icon-search"></i></button>
+            </td>
         </tr>
         
     </table>
 }
 </div>
 
-<table>
+<table class="table">
     <thead>
 
         <tr>
-            <th>编号</th>
-            <th>标题</th>
-            <th>操作</th>
+            <th class="span2">编号</th>
+            <th class="">标题</th>
+            <th class="span3">创建时间</th>
+            <th class="span2">操作</th>
         </tr>
     </thead>
     <tbody>
@@ -42,9 +46,10 @@
         <tr>
             <td>@item.Id</td>
             <td>@item.Title</td>
+            <td>@item.CreateDate.ToShortDateString()</td>
             <td>
-                @Html.ActionLink("编辑","addnews","admin",new {id = item.Id},null)
-                @Html.ActionLink("删除","delnews","admin",new {id = item.Id},new { @class="del"})
+                <a title="编辑" href="/admin/addnews/@item.Id"><i class="icon icon-edit"></i></a>
+                <a title="删除" href="/admin/delnews/@item.Id" ><i class="icon icon-del"></i></a>
 
             </td>
         </tr>
@@ -57,9 +62,9 @@ var pars = new Dictionary<string, object>();
         
     Html.RenderPager("_PageBar", list.Count, 10, (int)ViewData["pageIndex"], "/admin/news", pars);
 }
-
-<p>
-    @Html.ActionLink("添加新闻","AddNews")
+<div class="clear">&nbsp;</div>
+<p class="p ">
+    @Html.ActionLink("添加新闻", "AddNews", null, new { @class="button"})
 </p>
 <div id="dialog" title="操作完成" style="display:none;">
 	

@@ -4,14 +4,13 @@
     ViewBag.Title = "EditVideo";
 }
 
-<h2>EditVideo</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Video</legend>
+        <legend><span>添加/编辑视频</span></legend>
 
         @Html.HiddenFor(model => model.Id)
 
@@ -27,7 +26,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @class="span10 height2"})
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -35,30 +34,34 @@
             @Html.LabelFor(model => model.HtmlCode)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.HtmlCode)
+            @Html.TextAreaFor(model => model.HtmlCode, new { @class="span10 height2"})
             @Html.ValidationMessageFor(model => model.HtmlCode)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ImgUrl)
+            @Html.LabelFor(model => model.ImgUrl) (150 * 116)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ImgUrl)
-            <a id="abtnUpload" class="btn">上传图片</a>
-            <div id="divImg"></div>
+            <a title="上传图片" id="abtnUpload" class="merge btn"><i class="icon icon-upload"></i></a>
+            <div id="divImg">
+                @if (Model.Id != 0) {
+                    <img src="@Model.ImgUrl" style="width:150px;" />
+                }
+            </div>
             @Html.ValidationMessageFor(model => model.ImgUrl)
         </div>
 
         
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        
     </fieldset>
+    <p class="p">
+            <button class="button btn span2 pull-left">保存</button>
+            <a href="/admin/video.aspx" class="button btn btn-info span2 pull-left ml2">返回列表</a>
+        </p>
 }
 
-<div>
-    @Html.ActionLink("返回列表", "Video")
-</div>
+
 
 <div id="dialog" title="上传文件" style="display:none;">
 	

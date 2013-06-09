@@ -17,6 +17,11 @@ body {
 
 <h1>@Model.Title</h1>
 
+<div>
+    <span>@Model.Poster</span>发表于<span>@Model.CreateDate.ToShortDateString()</span>
+
+</div>
+
 <p style="height:1px;background:#aaa;margin-bottom:20px;">
     @Html.Raw(Model.Content)
 </p>

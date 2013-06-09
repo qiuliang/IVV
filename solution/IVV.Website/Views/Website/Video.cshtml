@@ -25,8 +25,8 @@ body {
     @foreach (var item in list) { 
     <p class="item">
         <span class="hide video">@Html.Raw(item.HtmlCode)</span>
-        <img class="thumb" src="@item.ImgUrl" /><br />
-        <span>@item.Title</span>
+        <img class="thumb" src="@item.ImgUrl" alt="@item.Title" /><br />
+        <span title="@item.Title">@IVV.Website.ClassLib.StringExtentions.SubString(item.Title,10)</span>
     </p>
     }
 </div>

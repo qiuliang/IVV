@@ -92,7 +92,7 @@ else
                 @: pageno="1" class="t-link">
             }
             
-                <span class="t-icon t-arrow-first">首页</span>
+                <span class="t-icon t-arrow-first">&lt;&lt;</span>
             </a>
             <a  pageno="@prev"
             @if (Model.PageIndex == 1)
@@ -107,7 +107,7 @@ else
                     @: href="@(Model.Url)&pageIndex=@prev"
                 }
             }
-            >    <span class="t-icon t-arrow-prev">上一页</span>
+            >    <span class="t-icon t-arrow-prev">&lt;</span>
             </a>
             <div class="t-numeric">
                 @if (Model.PageIndex > 10)
@@ -170,7 +170,7 @@ else
                 }
             }
             >
-                <span class="t-icon t-arrow-next">下一页</span>
+                <span class="t-icon t-arrow-next">&gt;</span>
             </a>
             <a pageno="@Model.PageCount"
             @if (Model.PageIndex == Model.PageCount)
@@ -189,7 +189,7 @@ else
                 }
             }
             >
-                <span class="t-icon t-arrow-last">末页</span>
+                <span class="t-icon t-arrow-last">&gt;&gt;</span>
             </a>
         </div>
         <div class="t-status-text" style="float:right;">当前显示 @Model.CurrentPageInfo 总共 @Model.TotalCount</div>

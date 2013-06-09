@@ -18,7 +18,8 @@ uploader.prototype.init = function () {
                     click: function () {
                         var urls = window.frames["uploadFrame"].document.__getUploadFileUrls();
                         for (var i = 0; i < urls.length; i++) {
-                            var imgstr = '<img src="'+urls[i]+'" style="width:100px;" />';
+                            var imgstr = '<img src="' + urls[i] + '" style="width:150px;" />';
+                            $("#" + _self._param.container).html("");
                             $("#" + _self._param.container).append($(imgstr));
                             $("#" + _self._param.textId).val(urls[i]);
                         }

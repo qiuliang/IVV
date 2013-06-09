@@ -8,6 +8,17 @@
 	<script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
 	<link href="~/uploadify/uploadify2.css" rel="stylesheet" />
 	<style type="text/css">
+	    .uploadify-button-text 
+	    {
+	        font-size: 14px;
+width: 350px;
+background: url(/images/admin/search.png) no-repeat 3px 3px;
+padding-left: 5px;
+display: inline-block;
+border: solid 1px #999
+	    }
+        
+
 		.demo {
 			border:0px solid blue;
 			background:#fff;
@@ -42,12 +53,28 @@
             top:0px;
             right:0px;
         }
+	    #btnUpload
+	    {
+	        position: absolute;
+	        top: 0px;
+	        left: 355px;
+            height: 32px;
+            border: solid 1px #999;
+            cursor:pointer;
+            font-weight:bold;
+	    }
 	</style>
 </head>
 <body>
-	<form name="form1" id="form1" action="d">
+	<form name="form1" id="form1" action="d" style="position:relative;">
 		<div id="queue"></div>
 		<input id="file_upload" name="file_upload" type="file" />
+        <p>
+		@*<a href="javascript:$('#file_upload').uploadify('upload', '*')">Upload Files</a>*@
+        
+            <input type="button" value="上传" id="btnUpload"/>
+		@*<a href="#" id="submitForm">upload</a>*@
+	</p>
 	</form>	
 
 	<script type="text/javascript">
@@ -61,11 +88,12 @@
 						return $("#userName").val();
 					}
 				},
-				'width':100,
+				'width':350,
 				'multi':true,
 				'auto': false,
-				'buttonText': '选择文件',
-				'buttonClass':'demo',
+				'buttonText': '浏览文件...',
+                'buttonClass':'demo',
+				'fileTypeExts': '*.gif;*.jpg;*.png',
 				'swf': '/Scripts/uploadify/uploadify.swf',
 				'uploader': 'ImageUpload.aspx',
 				'onQueueComplete': function (queueData) {
@@ -112,11 +140,7 @@
 		};
 	</script>
 
-	<p>
-		@*<a href="javascript:$('#file_upload').uploadify('upload', '*')">Upload Files</a>*@
-        <button id="btnUpload">上传文件</button>
-		@*<a href="#" id="submitForm">upload</a>*@
-	</p>
+	
 
     <div id="divThumbnail">
 

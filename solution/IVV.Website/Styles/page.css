@@ -124,32 +124,35 @@ p.dot_arrow span {
     margin-top: 10px;
     color: #0a4986;
     float: left;
-    width:100%;
+    width:490px;
 }
 
-.t-arrow-first, .t-arrow-prev {
-    float: left;
-}
-.page a span, .t-icon {
+
+.t-grid-pager a span, .t-icon {
     
     font-family: Arial;
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 24px;
+}
+.t-arrow-first, .t-arrow-prev {
+    float: left;
 }
 .t-arrow-prev {
     margin-left: 7px;
 }
 
 .page .current, .t-numeric .t-state-active {
-    background: none repeat scroll 0 0 #0a4986;
+    background: none repeat scroll 0 0 #999;
     color: #FFFFFF;
     float: left;
     font-weight: bold;
     padding: 1px 5px;
     margin: 0 3px;
+    font-size:12px;
 }
 .t-status-text {
     margin-left: 7px;
+    color:#999;
 }
 .t-numeric {
     float: left;
